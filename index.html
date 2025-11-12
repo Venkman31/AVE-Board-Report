@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AVE KPI Report</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Added D3.js library for charts -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -49,29 +51,62 @@
             <!-- Commercial KPIs -->
             <div>
                 <h3 class="text-lg font-semibold text-ave-dark mb-3">Commercial KPIs</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <!-- Revenue -->
                     <div class="bg-gray-50 rounded-lg p-4 text-center">
                         <p class="text-sm text-gray-500">Revenue vs Budget (YTD)</p>
                         <p class="text-3xl font-bold text-ave-orange">+£5k</p>
                         <p class="text-sm text-gray-700">Actual: £199k</p>
                     </div>
+                    <!-- PBIT -->
                     <div class="bg-ave-teal text-white rounded-lg p-4 text-center">
                         <p class="text-sm opacity-90">PBIT vs Budget (YTD)</p>
                         <p class="text-3xl font-bold">+£8.4k</p>
                         <p class="text-sm opacity-90">Actual: £35.8k</p>
                     </div>
-                </div>
-                <div class="bg-gray-50 rounded-lg p-4 text-center mt-4">
-                    <p class="text-sm text-gray-500">New Business Conversion Rate (YTD)</p>
-                    <p class="text-3xl font-bold text-ave-dark">21%</p>
+                    <!-- Conversion Rate Donut Chart -->
+                    <div class="bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center">
+                        <p class="text-sm text-gray-500 text-center mb-2">New Business Conversion (YTD)</p>
+                        <div id="conversion-chart"></div>
+                    </div>
                 </div>
 
                 <h4 class="text-md font-semibold text-ave-dark mb-2 mt-6">In-Month Performance</h4>
-                <ul class="list-disc list-inside text-gray-700 space-y-1">
-                    <li><span class="font-semibold">Revenue vs Budget:</span> +£5k (Actual: £199k)</li>
-                    <li><span class="font-semibold">PBIT vs Budget:</span> +£8.4k (Actual: £35.8k)</li>
-                    <li><span class="font-semibold">New Business Conversion:</span> 20%</li>
-                </ul>
+                <!-- In-Month Table -->
+                <div class="overflow-x-auto rounded-lg border border-gray-200">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-ave-teal">
+                            <tr>
+                                <th scope="col" class="px-4 py-2 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                    KPI
+                                </th>
+                                <th scope="col" class="px-4 py-2 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                    Variance
+                                </th>
+                                <th scope="col" class="px-4 py-2 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                    Actual
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200 text-sm">
+                            <tr>
+                                <td class="px-4 py-2 whitespace-nowrap text-ave-orange font-medium">Revenue vs Budget</td>
+                                <td class="px-4 py-2 whitespace-nowrap text-gray-700">+£5k</td>
+                                <td class="px-4 py-2 whitespace-nowrap text-gray-700">£199k</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 whitespace-nowrap text-ave-orange font-medium">PBIT vs Budget</td>
+                                <td class="px-4 py-2 whitespace-nowrap text-gray-700">+£8.4k</td>
+                                <td class="px-4 py-2 whitespace-nowrap text-gray-700">£35.8k</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 whitespace-nowrap text-ave-orange font-medium">New Business Conversion</td>
+                                <td class="px-4 py-2 whitespace-nowrap text-gray-700">20%</td>
+                                <td class="px-4 py-2 whitespace-nowrap text-gray-500">-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             <!-- Operational & People KPIs (Moved from Page 2) -->
@@ -126,6 +161,58 @@
         </div>
 
     </div>
+
+    <script>
+        // D3.js script for Conversion Rate Donut Chart
+        (function() {
+            const data = 21; // 21%
+            const width = 100;
+            const height = 100;
+            const radius = Math.min(width, height) / 2;
+            const arcColor = '#f59e0b'; // ave-orange
+            const remainingColor = '#e5e7eb'; // gray-200
+
+            const pieData = [
+                { value: data },
+                { value: 100 - data }
+            ];
+
+            const svg = d3.select("#conversion-chart")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height)
+                .append("g")
+                .attr("transform", `translate(${width / 2}, ${height / 2})`);
+
+            const color = d3.scaleOrdinal()
+                .domain([0, 1])
+                .range([arcColor, remainingColor]);
+
+            const pie = d3.pie()
+                .value(d => d.value)
+                .sort(null);
+
+            const arc = d3.arc()
+                .innerRadius(radius - 15) // Creates the donut hole
+                .outerRadius(radius);
+
+            svg.selectAll("path")
+                .data(pie(pieData))
+                .enter()
+                .append("path")
+                .attr("d", arc)
+                .attr("fill", (d, i) => color(i));
+
+            // Add text label in the middle
+            svg.append("text")
+                .attr("text-anchor", "middle")
+                .attr("dy", ".35em") // Vertically centers
+                .style("font-size", "22px")
+                .style("font-weight", "bold")
+                .attr("fill", "#374151") // text-ave-dark
+                .text(`${data}%`);
+        })();
+    </script>
 
 </body>
 </html>
