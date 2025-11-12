@@ -50,7 +50,7 @@
 
             <!-- Commercial KPIs -->
             <div>
-                <h3 class="text-lg font-semibold text-ave-dark mb-3">Commercial KPIs</h3>
+                <h3 class="text-xl font-semibold text-ave-teal mb-3">Commercial KPIs</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <!-- Revenue -->
                     <div class="bg-gray-50 rounded-lg p-4 text-center">
@@ -71,7 +71,7 @@
                     </div>
                 </div>
 
-                <h4 class="text-md font-semibold text-ave-dark mb-2 mt-6">In-Month Performance</h4>
+                <h4 class="text-lg font-semibold text-ave-teal mb-2 mt-6">In-Month Performance</h4>
                 <!-- In-Month Table -->
                 <div class="overflow-x-auto rounded-lg border border-gray-200">
                     <table class="min-w-full divide-y divide-gray-200">
@@ -111,49 +111,35 @@
 
             <!-- Operational & People KPIs (Moved from Page 2) -->
             <div class="pt-6 border-t border-gray-200 mt-6">
-                <h3 class="text-lg font-semibold text-ave-dark mb-4">Operational & People KPIs</h3>
+                <h3 class="text-xl font-semibold text-ave-teal mb-4">Operational & People KPIs</h3>
                 
                 <!-- Operational KPIs -->
                 <div>
-                    <h4 class="text-md font-semibold text-ave-dark mb-3">Operational KPIs (YTD)</h4>
-                    <div class="space-y-3 text-sm">
-                        <div class="w-full">
-                            <div class="flex justify-between text-xs mb-1">
-                                <span>Ticket Success KPI</span>
-                                <span class="font-medium text-ave-dark">56%</span>
-                            </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                <div class="bg-ave-orange h-2.5 rounded-full" style="width: 56%"></div>
-                            </div>
+                    <h4 class="text-lg font-semibold text-ave-teal mb-3">Operational KPIs (YTD)</h4>
+                    <!-- Replaced gray boxes with teal boxes -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-ave-teal text-white rounded-lg p-4 flex flex-col items-center justify-center">
+                            <p class="text-sm opacity-90 text-center mb-2">Ticket Success KPI</p>
+                            <div id="ticket-success-chart"></div>
                         </div>
-                        <div class="w-full">
-                            <div class="flex justify-between text-xs mb-1">
-                                <span>Total Tickets (KPI)</span>
-                                <span class="font-medium text-ave-dark">62%</span>
-                            </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                <div class="bg-ave-orange h-2.5 rounded-full" style="width: 62%"></div>
-                            </div>
+                        <div class="bg-ave-teal text-white rounded-lg p-4 flex flex-col items-center justify-center">
+                            <p class="text-sm opacity-90 text-center mb-2">Total Tickets (KPI)</p>
+                            <div id="total-tickets-chart"></div>
                         </div>
-                        <div class="w-full">
-                             <div class="flex justify-between text-xs mb-1">
-                                <span>Nutrition Bespoke Menu Turnaround</span>
-                                <span class="font-medium text-ave-teal">92.50%</span>
-                            </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                <div class="bg-ave-teal h-2.5 rounded-full" style="width: 92.5%"></div>
-                            </div>
+                        <div class="bg-ave-teal text-white rounded-lg p-4 flex flex-col items-center justify-center">
+                            <p class="text-sm opacity-90 text-center mb-2">Nutrition Menu Turnaround</p>
+                            <div id="nutrition-chart"></div>
                         </div>
                     </div>
                 </div>
 
                 <!-- People KPI -->
                 <div class="pt-4 border-t border-gray-200 mt-6">
-                    <h4 class="text-md font-semibold text-ave-dark mb-2">People KPI</h4>
-                     <div class="bg-gray-50 rounded-lg p-4 text-center">
-                        <p class="text-sm text-gray-500">Mandatory Training Completion (YTD)</p>
-                        <p class="text-3xl font-bold text-ave-dark">8</p>
-                        <p class="text-sm text-gray-700">4 completed in-month</p>
+                    <h4 class="text-lg font-semibold text-ave-teal mb-2">People KPI</h4>
+                     <div class="bg-ave-teal text-white rounded-lg p-4 text-center">
+                        <p class="text-sm opacity-90">Mandatory Training Completion (YTD)</p>
+                        <p class="text-3xl font-bold text-ave-orange">8</p>
+                        <p class="text-sm opacity-90">4 completed in-month</p>
                     </div>
                 </div>
 
@@ -165,52 +151,81 @@
     <script>
         // D3.js script for Conversion Rate Donut Chart
         (function() {
-            const data = 21; // 21%
-            const width = 100;
-            const height = 100;
-            const radius = Math.min(width, height) / 2;
-            const arcColor = '#f59e0b'; // ave-orange
-            const remainingColor = '#e5e7eb'; // gray-200
+            /**
+             * Creates a donut chart in a specified D3 selector.
+             * @param {string} selector - The D3 selector (e.g., "#chart-id")
+             * @param {number} data - The percentage value (0-100)
+             * @param {string} arcColor - The hex code for the arc
+             * @param {string} [textColor='#374151'] - The hex code for the text
+             * @param {number} [fontSize=22] - Optional font size
+             * @param {string} [remainingColor='#e5e7eb'] - Optional hex code for the remaining part of the arc
+             */
+            function createDonutChart(selector, data, arcColor, textColor = '#374151', fontSize = 22, remainingColor = '#e5e7eb') {
+                const width = 100;
+                const height = 100;
+                const radius = Math.min(width, height) / 2;
+                // const remainingColor = '#e5e7eb'; // gray-200 // This is now an argument
 
-            const pieData = [
-                { value: data },
-                { value: 100 - data }
-            ];
+                const pieData = [
+                    { value: data },
+                    { value: 100 - data }
+                ];
 
-            const svg = d3.select("#conversion-chart")
-                .append("svg")
-                .attr("width", width)
-                .attr("height", height)
-                .append("g")
-                .attr("transform", `translate(${width / 2}, ${height / 2})`);
+                const svg = d3.select(selector)
+                    .append("svg")
+                    .attr("width", width)
+                    .attr("height", height)
+                    .append("g")
+                    .attr("transform", `translate(${width / 2}, ${height / 2})`);
 
-            const color = d3.scaleOrdinal()
-                .domain([0, 1])
-                .range([arcColor, remainingColor]);
+                const color = d3.scaleOrdinal()
+                    .domain([0, 1])
+                    .range([arcColor, remainingColor]);
 
-            const pie = d3.pie()
-                .value(d => d.value)
-                .sort(null);
+                const pie = d3.pie()
+                    .value(d => d.value)
+                    .sort(null);
 
-            const arc = d3.arc()
-                .innerRadius(radius - 15) // Creates the donut hole
-                .outerRadius(radius);
+                const arc = d3.arc()
+                    .innerRadius(radius - 15) // Creates the donut hole
+                    .outerRadius(radius);
 
-            svg.selectAll("path")
-                .data(pie(pieData))
-                .enter()
-                .append("path")
-                .attr("d", arc)
-                .attr("fill", (d, i) => color(i));
+                svg.selectAll("path")
+                    .data(pie(pieData))
+                    .enter()
+                    .append("path")
+                    .attr("d", arc)
+                    .attr("fill", (d, i) => color(i));
 
-            // Add text label in the middle
-            svg.append("text")
-                .attr("text-anchor", "middle")
-                .attr("dy", ".35em") // Vertically centers
-                .style("font-size", "22px")
-                .style("font-weight", "bold")
-                .attr("fill", "#374151") // text-ave-dark
-                .text(`${data}%`);
+                // Add text label in the middle
+                svg.append("text")
+                    .attr("text-anchor", "middle")
+                    .attr("dy", ".35em") // Vertically centers
+                    .style("font-size", `${fontSize}px`)
+                    .style("font-weight", "bold")
+                    .attr("fill", textColor)
+                    // Format to 1 decimal place if it's a float, 0 if integer
+                    .text(`${parseFloat(data.toFixed(1))}%`); 
+            }
+
+            // --- Create all charts ---
+            
+            // New Business Conversion (YTD)
+            createDonutChart("#conversion-chart", 21, '#f59e0b'); // ave-orange
+
+            // --- Operational KPIs (Teal boxes) ---
+            const tealRemainingColor = 'rgba(255, 255, 255, 0.3)'; // Semi-transparent white for teal background
+            const whiteColor = '#FFFFFF';
+
+            // Ticket Success KPI (Orange arc, white text, on teal bg)
+            createDonutChart("#ticket-success-chart", 56, '#f59e0b', whiteColor, 22, tealRemainingColor);
+
+            // Total Tickets (KPI) (Orange arc, white text, on teal bg)
+            createDonutChart("#total-tickets-chart", 62, '#f59e0b', whiteColor, 22, tealRemainingColor);
+
+            // Nutrition Bespoke Menu Turnaround (Orange arc, white text, on teal bg)
+            createDonutChart("#nutrition-chart", 92.50, '#f59e0b', whiteColor, 19, tealRemainingColor);
+
         })();
     </script>
 
