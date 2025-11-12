@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AVE KPI Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Define the brand colors from the logo */
+            --ave-teal: #009688; /* A shade of teal from the logo */
+            --ave-orange: #f59e0b; /* Tailwind's amber-500, close to the logo's orange */
+            --ave-dark: #374151; /* Tailwind's gray-700, for text */
+        }
+        .bg-ave-teal { background-color: var(--ave-teal); }
+        .text-ave-teal { color: var(--ave-teal); }
+        .bg-ave-orange { background-color: var(--ave-orange); }
+        .text-ave-orange { color: var(--ave-orange); }
+        .text-ave-dark { color: var(--ave-dark); }
+        .border-ave-teal { border-color: var(--ave-teal); }
+    </style>
+</head>
+<body class="bg-gray-100 p-4 md:p-8">
+
+    <!-- This grid stacks the pages vertically -->
+    <div class="max-w-4xl mx-auto grid grid-cols-1 gap-8">
+
+        <!-- ============================================= -->
+        <!--                  PAGE 1                       -->
+        <!-- ============================================= -->
+        <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg flex flex-col space-y-6">
+            <!-- Page Header -->
+            <div class="flex justify-between items-center border-b pb-4 border-gray-200">
+                <div>
+                    <!-- Recreating the logo text style -->
+                    <h1 class="text-4xl font-bold tracking-tight">
+                        <span class="text-ave-teal">A</span><span class="text-ave-orange">V</span><span class="text-ave-teal">E</span>
+                    </h1>
+                    <p class="text-xs font-medium text-gray-500 tracking-wider">ADDED VALUE ENTERPRISES</p>
+                </div>
+                <div class="text-right">
+                    <h2 class="text-xl font-bold text-ave-dark">KPI Summary Report</h2>
+                    <p class="text-sm text-gray-500">YTD Performance</p>
+                </div>
+            </div>
+
+            <!-- Commercial KPIs -->
+            <div>
+                <h3 class="text-lg font-semibold text-ave-dark mb-3">Commercial KPIs</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-gray-50 rounded-lg p-4 text-center">
+                        <p class="text-sm text-gray-500">Revenue vs Budget (YTD)</p>
+                        <p class="text-3xl font-bold text-ave-orange">+£5k</p>
+                        <p class="text-sm text-gray-700">Actual: £199k</p>
+                    </div>
+                    <div class="bg-ave-teal text-white rounded-lg p-4 text-center">
+                        <p class="text-sm opacity-90">PBIT vs Budget (YTD)</p>
+                        <p class="text-3xl font-bold">+£8.4k</p>
+                        <p class="text-sm opacity-90">Actual: £35.8k</p>
+                    </div>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-4 text-center mt-4">
+                    <p class="text-sm text-gray-500">New Business Conversion Rate (YTD)</p>
+                    <p class="text-3xl font-bold text-ave-dark">21%</p>
+                </div>
+
+                <h4 class="text-md font-semibold text-ave-dark mb-2 mt-6">In-Month Performance</h4>
+                <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <li><span class="font-semibold">Revenue vs Budget:</span> +£5k (Actual: £199k)</li>
+                    <li><span class="font-semibold">PBIT vs Budget:</span> +£8.4k (Actual: £35.8k)</li>
+                    <li><span class="font-semibold">New Business Conversion:</span> 20%</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ============================================= -->
+        <!--                  PAGE 2                       -->
+        <!-- ============================================= -->
+        <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg flex flex-col space-y-6">
+            
+            <!-- Page Header (Copied from Page 1) -->
+            <div class="flex justify-between items-center border-b pb-4 border-gray-200">
+                <div>
+                    <!-- Recreating the logo text style -->
+                    <h1 class="text-4xl font-bold tracking-tight">
+                        <span class="text-ave-teal">A</span><span class="text-ave-orange">V</span><span class="text-ave-teal">E</span>
+                    </h1>
+                    <p class="text-xs font-medium text-gray-500 tracking-wider">ADDED VALUE ENTERPRISES</p>
+                </div>
+                <div class="text-right">
+                    <h2 class="text-xl font-bold text-ave-dark">KPI Summary Report</h2>
+                    <p class="text-sm text-gray-500">YTD Performance</p>
+                </div>
+            </div>
+
+            <!-- Operational & People KPIs -->
+            <div>
+                <h3 class="text-lg font-semibold text-ave-dark mb-4">Operational & People KPIs</h3>
+                
+                <!-- Operational KPIs -->
+                <div>
+                    <h4 class="text-md font-semibold text-ave-dark mb-3">Operational KPIs (YTD)</h4>
+                    <div class="space-y-3 text-sm">
+                        <div class="w-full">
+                            <div class="flex justify-between text-xs mb-1">
+                                <span>Ticket Success KPI</span>
+                                <span class="font-medium text-ave-dark">56%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-ave-orange h-2.5 rounded-full" style="width: 56%"></div>
+                            </div>
+                        </div>
+                        <div class="w-full">
+                            <div class="flex justify-between text-xs mb-1">
+                                <span>Total Tickets (KPI)</span>
+                                <span class="font-medium text-ave-dark">62%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-ave-orange h-2.5 rounded-full" style="width: 62%"></div>
+                            </div>
+                        </div>
+                        <div class="w-full">
+                             <div class="flex justify-between text-xs mb-1">
+                                <span>Nutrition Bespoke Menu Turnaround</span>
+                                <span class="font-medium text-ave-teal">92.50%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-ave-teal h-2.5 rounded-full" style="width: 92.5%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- People KPI -->
+                <div class="pt-4 border-t border-gray-200 mt-6">
+                    <h4 class="text-md font-semibold text-ave-dark mb-2">People KPI</h4>
+                     <div class="bg-gray-50 rounded-lg p-4 text-center">
+                        <p class="text-sm text-gray-500">Mandatory Training Completion (YTD)</p>
+                        <p class="text-3xl font-bold text-ave-dark">8</p>
+                        <p class="text-sm text-gray-700">4 completed in-month</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
