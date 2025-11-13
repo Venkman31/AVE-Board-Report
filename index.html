@@ -99,58 +99,58 @@
             /* --- Page Break Classes --- */
             .print-page-1 {
                 break-after: page;
+                padding-top: 1.5rem; /* Add some space at the top of new page */
+            }
+            
+            .print-page-2 {
+                break-after: page;
                 padding-bottom: 0;
                 margin-bottom: 0;
             }
-
-            /* --- AGGRESSIVE SQUEEZE FOR PAGE 1 --- */
-            .print-page-1 .mt-6 { margin-top: 1rem; }
-            .print-page-1 .mb-4 { margin-bottom: 0.5rem; }
-            .print-page-1 .space-y-6 { row-gap: 1rem; }
-            .print-page-1 .pt-4 { padding-top: 1rem; }
+            
+            /* --- AGGRESSIVE SQUEEZE FOR PAGE 2 (DASHBOARD) --- */
+            .print-page-2 .mt-6 { margin-top: 1rem; }
+            .print-page-2 .mb-4 { margin-bottom: 0.5rem; }
+            .print-page-2 .space-y-6 { row-gap: 1rem; }
+            .print-page-2 .pt-4 { padding-top: 1rem; }
 
             /* Squeeze Commercial KPI boxes */
-            .print-page-1 .commercial-kpi-box {
+            .print-page-2 .commercial-kpi-box {
                 padding: 0.5rem; /* reduce padding */
             }
-            .print-page-1 .commercial-kpi-box .text-3xl {
+            .print-page-2 .commercial-kpi-box .text-3xl {
                 font-size: 1.5rem; /* 24px */
             }
-            .print-page-1 .commercial-kpi-box .text-sm {
+            .print-page-2 .commercial-kpi-box .text-sm {
                 font-size: 0.75rem; /* 12px */
             }
             /* Squeeze donut chart box */
-            .print-page-1 .commercial-donut-box {
+            .print-page-2 .commercial-donut-box {
                 padding: 0.5rem;
             }
-            .print-page-1 .commercial-donut-box .pie {
+            .print-page-2 .commercial-donut-box .pie {
                 width: 90px;
                 height: 90px;
             }
-            .print-page-1 .commercial-donut-box .pie .text-2xl {
+            .print-page-2 .commercial-donut-box .pie .text-2xl {
                 font-size: 1.25rem; /* 20px */
             }
             
             /* Remove min-height on teal boxes */
-            .print-page-1 .min-h-\[160px\] {
+            .print-page-2 .min-h-\[160px\] {
                 min-height: auto;
                 padding-top: 1rem;
                 padding-bottom: 1rem;
             }
             /* Squeeze padding on orange box */
-            .print-page-1 .bg-ave-orange.rounded-lg.p-4 {
+            .print-page-2 .bg-ave-orange.rounded-lg.p-4 {
                 padding: 0.75rem;
             }
             /* Squeeze padding on In-Month table box */
-            .print-page-1 .in-month-box {
+            .print-page-2 .in-month-box {
                 padding: 0.75rem;
             }
             /* --- End Aggressive Squeeze --- */
-
-            .print-page-2 {
-                break-after: page;
-                padding-top: 1.5rem; /* Add some space at the top of new page */
-            }
             
             .print-page-3 {
                  padding-top: 1.5rem; /* Add some space at the top of new page */
@@ -171,25 +171,44 @@
     <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-2xl shadow-lg flex flex-col space-y-6">
 
         <!-- ============================================= -->
-        <!--            PRINT PAGE 1: DASHBOARD            -->
+        <!--                  HEADER                       -->
+        <!-- ============================================= -->
+        <div class="flex justify-between items-center border-b pb-4 border-gray-200">
+            <div>
+                <h1 class="text-4xl font-bold tracking-tight">
+                    <span class="text-ave-teal">A</span><span class="text-ave-orange">V</span><span class="text-ave-teal">E</span>
+                </h1>
+                <p class="text-xs font-medium text-gray-500 tracking-wider">ADDED VALUE ENTERPRISES</p>
+            </div>
+            <div class="text-right">
+                <h2 class="text-xl font-bold text-ave-dark">Board KPI Dashboard</h2>
+                <p class="text-sm text-gray-500">October 2025</p>
+            </div>
+        </div>
+
+        <!-- ============================================= -->
+        <!--         PRINT PAGE 1: MD SUMMARY              -->
         <!-- ============================================= -->
         <div class="print-page-1">
-            <!-- ============================================= -->
-            <!--                  HEADER                       -->
-            <!-- ============================================= -->
-            <div class="flex justify-between items-center border-b pb-4 border-gray-200">
-                <div>
-                    <h1 class="text-4xl font-bold tracking-tight">
-                        <span class="text-ave-teal">A</span><span class="text-ave-orange">V</span><span class="text-ave-teal">E</span>
-                    </h1>
-                    <p class="text-xs font-medium text-gray-500 tracking-wider">ADDED VALUE ENTERPRISES</p>
-                </div>
-                <div class="text-right">
-                    <h2 class="text-xl font-bold text-ave-dark">Board KPI Dashboard</h2>
-                    <p class="text-sm text-gray-500">October 2025</p>
-                </div>
+            <!-- NEW MD SUMMARY SECTION -->
+            <div class="pt-6">
+                <h3 class="text-xl font-semibold text-ave-teal mb-4">Managing Directors Executive Summary & Strategic Context</h3>
+                <p class="text-gray-700 text-sm leading-relaxed mb-3">
+                    We start the first financial period of the year with a clear focus on 3 key pillars of the business. <strong>People. Foundations & Growth.</strong>
+                </p>
+                <ul class="list-disc list-inside text-gray-700 text-sm space-y-2">
+                    <li><strong>People</strong> - We have held a strategic away day with the whole business in which we increased the teams understanding of our vision & values with avg scoring increasing substantially from a 2.7/5 to a 4.5/5. The team also delivered departmental updates and client service excellence training sessions to align everyone in each department with key projects. The away day also engaged with our L&D programme with presentations from their team to our whole business to ensure everyone has the opportunity to thrive. We are also expanding capacity within our office environment to account for the additional head count of 2 new buyers we have invested in and ensure they become part of our office and business culture with a place to call home.</li>
+                    <li><strong>Foundations</strong> - Work on our internal and client facing systems is increasing significantly with improvements to Procure Wizard as well as Halo and our ticketing and Sales platforms to streamline processes, increase efficiencies and drive data output. Significant investment into the Paying the Bill project which we expect to receive a ‘Go/NoGo’ decision from the Project Team on 19th Nov 25.</li>
+                    <li><strong>Growth</strong> - Our priority has been winning new business in month (3wins including our first hotel group) and building the Go To Market Strategy and Operational Processes for Sales, Marketing, PR & SEO and Onboarding new business. These are already being implemented within the business and recruitment underway for 2 new BDM’s with strong KPI expectations.</li>
+                </ul>
             </div>
+        </div>
+        <!-- END OF PRINT PAGE 1 -->
 
+        <!-- ============================================= -->
+        <!--            PRINT PAGE 2: DASHBOARD            -->
+        <!-- ============================================= -->
+        <div class="print-page-2 pt-6 border-t border-gray-200">
             <!-- ============================================= -->
             <!--             COMMERCIAL KPIs (YTD)             -->
             <!-- ============================================= -->
@@ -297,34 +316,14 @@
                 </div>
             </div>
         </div>
-        <!-- END OF PRINT PAGE 1 -->
+        <!-- END OF PRINT PAGE 2 -->
 
 
         <!-- ============================================= -->
-        <!--          DETAILED REPORT TEXT (PAGES 2-3)     -->
+        <!--          DETAILED REPORT TEXT (PAGE 3)     -->
         <!-- ============================================= -->
         <div class="pt-6 border-t border-gray-200 space-y-6">
             
-            <!-- ============================================= -->
-            <!--         PRINT PAGE 2: MD SUMMARY              -->
-            <!-- ============================================= -->
-            <div class="print-page-2">
-                <!-- NEW MD SUMMARY SECTION -->
-                <div>
-                    <h3 class="text-xl font-semibold text-ave-teal mb-4">Managing Directors Executive Summary & Strategic Context</h3>
-                    <p class="text-gray-700 text-sm leading-relaxed mb-3">
-                        We start the first financial period of the year with a clear focus on 3 key pillars of the business. <strong>People. Foundations & Growth.</strong>
-                    </p>
-                    <ul class="list-disc list-inside text-gray-700 text-sm space-y-2">
-                        <li><strong>People</strong> - We have held a strategic away day with the whole business in which we increased the teams understanding of our vision & values with avg scoring increasing substantially from a 2.7/5 to a 4.5/5. The team also delivered departmental updates and client service excellence training sessions to align everyone in each department with key projects. The away day also engaged with our L&D programme with presentations from their team to our whole business to ensure everyone has the opportunity to thrive. We are also expanding capacity within our office environment to account for the additional head count of 2 new buyers we have invested in and ensure they become part of our office and business culture with a place to call home.</li>
-                        <li><strong>Foundations</strong> - Work on our internal and client facing systems is increasing significantly with improvements to Procure Wizard as well as Halo and our ticketing and Sales platforms to streamline processes, increase efficiencies and drive data output. Significant investment into the Paying the Bill project which we expect to receive a ‘Go/NoGo’ decision from the Project Team on 19th Nov 25.</li>
-                        <li><strong>Growth</strong> - Our priority has been winning new business in month (3wins including our first hotel group) and building the Go To Market Strategy and Operational Processes for Sales, Marketing, PR & SEO and Onboarding new business. These are already being implemented within the business and recruitment underway for 2 new BDM’s with strong KPI expectations.</li>
-                    </ul>
-                </div>
-            </div>
-            <!-- END OF PRINT PAGE 2 -->
-
-
             <!-- ============================================= -->
             <!--         PRINT PAGE 3: ALL OTHER DEPARTMENTS   -->
             <!-- ============================================= -->
