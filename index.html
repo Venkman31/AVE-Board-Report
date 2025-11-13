@@ -21,7 +21,7 @@
         .text-ave-dark { color: #374151; }
         .border-ave-teal { border-color: #009688; }
 
-        /* --- RELIABLE CSS-ONLY DONUT CHART --- */
+        /* --- CSS-only Donut Chart --- */
         .pie {
           width: 120px;
           height: 120px;
@@ -51,224 +51,316 @@
         .pie.teal-box:before {
           background: #009688;
         }
-        /* --- END OF CHART CSS --- */
+
+        /* --- PRINT STYLES --- */
+        @media print {
+            body {
+                padding: 0;
+                margin: 0;
+                background: #fff;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .print-hide {
+                display: none;
+            }
+            .max-w-4xl {
+                max-width: 100% !important;
+                box-shadow: none !important;
+                border: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            .bg-gray-100 {
+                background: #fff !important;
+            }
+            .rounded-2xl, .rounded-lg {
+                border-radius: 0;
+            }
+            .shadow-lg {
+                box-shadow: none !important;
+            }
+            .bg-gray-50 {
+                background: #f9fafb !important; /* Keep a very light gray */
+                border: 1px solid #eee;
+            }
+            .bg-ave-teal {
+                background-color: #009688 !important;
+            }
+            .bg-ave-orange {
+                background-color: #f59e0b !important;
+            }
+            /* Force render conic-gradient */
+            .pie {
+                 -webkit-print-color-adjust: exact;
+                 print-color-adjust: exact;
+            }
+            /* --- Page Break Classes --- */
+            .print-page-1 {
+                break-after: page;
+                /* COMPACT LAYOUT FOR PRINT */
+                padding-bottom: 0;
+                margin-bottom: 0;
+            }
+            .print-page-1 .min-h-\[160px\] {
+                min-height: 140px; /* Squeeze height */
+            }
+            .print-page-1 .mb-4 {
+                margin-bottom: 0.75rem; /* Squeeze margins */
+            }
+            .print-page-1 .space-y-6 {
+                row-gap: 1rem;
+            }
+
+            .print-page-2 {
+                break-after: page;
+            }
+        }
+        /* --- END OF PRINT STYLES --- */
     </style>
 </head>
 <body class="bg-gray-100 p-4 md:p-8">
 
+    <!-- Save as PDF Button -->
+    <div class="max-w-4xl mx-auto mb-4 print-hide">
+        <button onclick="window.print()" class="bg-ave-teal text-white font-bold py-2 px-4 rounded-lg shadow hover:bg-opacity-90 transition-colors">
+            Save as PDF
+        </button>
+    </div>
+
     <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-2xl shadow-lg flex flex-col space-y-6">
 
         <!-- ============================================= -->
-        <!--                  HEADER                       -->
+        <!--            PRINT PAGE 1: DASHBOARD            -->
         <!-- ============================================= -->
-        <div class="flex justify-between items-center border-b pb-4 border-gray-200">
-            <div>
-                <h1 class="text-4xl font-bold tracking-tight">
-                    <span class="text-ave-teal">A</span><span class="text-ave-orange">V</span><span class="text-ave-teal">E</span>
-                </h1>
-                <p class="text-xs font-medium text-gray-500 tracking-wider">ADDED VALUE ENTERPRISES</p>
+        <div class="print-page-1">
+            <!-- ============================================= -->
+            <!--                  HEADER                       -->
+            <!-- ============================================= -->
+            <div class="flex justify-between items-center border-b pb-4 border-gray-200">
+                <div>
+                    <h1 class="text-4xl font-bold tracking-tight">
+                        <span class="text-ave-teal">A</span><span class="text-ave-orange">V</span><span class="text-ave-teal">E</span>
+                    </h1>
+                    <p class="text-xs font-medium text-gray-500 tracking-wider">ADDED VALUE ENTERPRISES</p>
+                </div>
+                <div class="text-right">
+                    <h2 class="text-xl font-bold text-ave-dark">Board KPI Dashboard</h2>
+                    <p class="text-sm text-gray-500">October 2025</p>
+                </div>
             </div>
-            <div class="text-right">
-                <h2 class="text-xl font-bold text-ave-dark">Board KPI Dashboard</h2>
-                <p class="text-sm text-gray-500">October 2025</p>
-            </div>
-        </div>
 
-        <!-- ============================================= -->
-        <!--             COMMERCIAL KPIs (YTD)             -->
-        <!-- ============================================= -->
-        <div>
-            <h3 class="text-xl font-semibold text-ave-teal mb-4">Commercial KPIs (YTD)</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- ============================================= -->
+            <!--             COMMERCIAL KPIs (YTD)             -->
+            <!-- ============================================= -->
+            <div class="mt-6">
+                <h3 class="text-xl font-semibold text-ave-teal mb-4">Commercial KPIs (YTD)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    
+                    <div class="bg-gray-50 rounded-lg p-4 text-center">
+                        <p class="text-sm text-gray-500">Revenue vs Budget</p>
+                        <p class="text-3xl font-bold text-ave-orange">+£5k</p>
+                        <p class="text-sm text-gray-700">(£199k Actual)</p>
+                    </div>
+
+                    <div class="bg-gray-50 rounded-lg p-4 text-center">
+                        <p class="text-sm text-gray-500">PBIT vs Budget</p>
+                        <p class="text-3xl font-bold text-ave-orange">+£8.4k</p>
+                        <p class="text-sm text-gray-700">(£35.8k Actual)</p>
+                    </div>
+
+                    <!-- KPI 3: Conversion Chart (12%) -->
+                    <div class="bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center">
+                        <!-- THIS IS THE CORRECTED GRADIENT SYNTAX -->
+                        <div class="pie gray-box" style="background: conic-gradient(#f59e0b 12%, #e5e7eb 12%);">
+                            <div class="absolute text-center">
+                                <span class="text-2xl font-bold text-ave-dark">12%</span>
+                            </div>
+                        </div>
+                        <p class="text-sm font-medium text-ave-dark mt-2">New Business Conversion</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================= -->
+            <!--           IN-MONTH PERFORMANCE                -->
+            <!-- ============================================= -->
+            <div class="pt-4 mt-6 border-t border-gray-200 bg-gray-50 p-4 rounded-lg">
+                <h3 class="text-xl font-semibold text-ave-teal mb-4">In-Month Performance</h3>
                 
-                <div class="bg-gray-50 rounded-lg p-4 text-center">
-                    <p class="text-sm text-gray-500">Revenue vs Budget</p>
-                    <p class="text-3xl font-bold text-ave-orange">+£5k</p>
-                    <p class="text-sm text-gray-700">(£199k Actual)</p>
+                <div class="overflow-x-auto rounded-lg border border-gray-200">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-ave-teal">
+                            <tr>
+                                <th scope="col" class="px-4 py-2 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                    KPI
+                                </th>
+                                <th scope="col" class="px-4 py-2 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                    Value
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200 text-sm">
+                            <tr>
+                                <td class="px-4 py-2 whitespace-nowrap text-ave-orange font-medium">Revenue vs Budget</td>
+                                <td class="px-4 py-2 whitespace-nowrap text-gray-700">+£5k (£199k Actual)</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 whitespace-nowrap text-ave-orange font-medium">PBIT vs Budget</td>
+                                <td class="px-4 py-2 whitespace-nowrap text-gray-700">+£8.4k (£35.8k Actual)</td>
+                            </tr>
+                            <!-- Rows removed as requested -->
+                        </tbody>
+                    </table>
                 </div>
+            </div>
 
-                <div class="bg-gray-50 rounded-lg p-4 text-center">
-                    <p class="text-sm text-gray-500">PBIT vs Budget</p>
-                    <p class="text-3xl font-bold text-ave-orange">+£8.4k</p>
-                    <p class="text-sm text-gray-700">(£35.8k Actual)</p>
-                </div>
+            <!-- ============================================= -->
+            <!--         OPERATIONAL & PEOPLE KPIs (YTD)       -->
+            <!-- ============================================= -->
+            <div class="pt-4 mt-6 border-t border-gray-200">
+                <h3 class="text-xl font-semibold text-ave-teal mb-4">Operational & People KPIs (YTD)</h3>
 
-                <!-- KPI 3: Conversion Chart (12%) -->
-                <div class="bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center">
-                    <!-- THE FIX: #e5e7eb 12% (was 0) -->
-                    <div class="pie gray-box" style="background: conic-gradient(#f59e0b 12%, #e5e7eb 12%);">
-                        <div class="absolute text-center">
-                            <span class="text-2xl font-bold text-ave-dark">12%</span>
+                <div class="grid grid-cols-3 gap-4 mb-4">
+                    <!-- KPI: Valid Ticket Compliance (56%) -->
+                    <div class="bg-ave-teal text-white rounded-lg p-4 flex flex-col items-center justify-center min-h-[160px]">
+                        <!-- THIS IS THE CORRECTED GRADIENT SYNTAX -->
+                        <div class="pie teal-box" style="background: conic-gradient(#f59e0b 56%, #e0f2f1 56%);">
+                            <div class="absolute text-center">
+                                <span class="text-2xl font-bold text-white">56%</span>
+                            </div>
                         </div>
+                        <p class="text-sm font-medium text-white mt-2 text-center">Valid Ticket Compliance</p>
                     </div>
-                    <p class="text-sm font-medium text-ave-dark mt-2">New Business Conversion</p>
+
+                    <!-- KPI: Total Tickets (180) -->
+                    <div class="bg-ave-teal text-white rounded-lg p-4 flex flex-col items-center justify-center min-h-[160px]">
+                        <p class="text-sm opacity-90 text-center">Total Tickets</p>
+                        <p class="text-5xl font-bold text-white">180</p>
+                    </div>
+
+                    <!-- KPI: Bespoke Menu Compliance (93%) -->
+                    <div class="bg-ave-teal text-white rounded-lg p-4 flex flex-col items-center justify-center min-h-[160px]">
+                        <!-- THIS IS THE CORRECTED GRADIENT SYNTAX -->
+                        <div class="pie teal-box" style="background: conic-gradient(#f59e0b 93%, #e0f2f1 93%);">
+                            <div class="absolute text-center">
+                                <span class="text-2xl font-bold text-white">93%</span>
+                            </div>
+                        </div>
+                        <p class="text-sm font-medium text-white mt-2 text-center">Bespoke Menu Compliance</p>
+                    </div>
+                </div>
+
+                <!-- People KPI - Orange Box (100%) -->
+                <div class="bg-ave-orange text-white rounded-lg p-4 text-center">
+                    <p class="text-sm opacity-90">Mandatory Training Completion (YTD)</p>
+                    <p class="text-4xl font-bold text-white">100%</p>
                 </div>
             </div>
         </div>
+        <!-- END OF PRINT PAGE 1 -->
+
 
         <!-- ============================================= -->
-        <!--           IN-MONTH PERFORMANCE                -->
-        <!-- ============================================= -->
-        <div class="pt-4 border-t border-gray-200 bg-gray-50 p-4 rounded-lg">
-            <h3 class="text-xl font-semibold text-ave-teal mb-4">In-Month Performance</h3>
-            
-            <div class="overflow-x-auto rounded-lg border border-gray-200">
-                <table class="min-w-full divide-y divide-gray-200">
-                    <thead class="bg-ave-teal">
-                        <tr>
-                            <th scope="col" class="px-4 py-2 text-left text-xs font-medium text-white uppercase tracking-wider">
-                                KPI
-                            </th>
-                            <th scope="col" class="px-4 py-2 text-left text-xs font-medium text-white uppercase tracking-wider">
-                                Value
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-gray-200 text-sm">
-                        <tr>
-                            <td class="px-4 py-2 whitespace-nowrap text-ave-orange font-medium">Revenue vs Budget</td>
-                            <td class="px-4 py-2 whitespace-nowrap text-gray-700">+£5k (£199k Actual)</td>
-                        </tr>
-                        <tr>
-                            <td class="px-4 py-2 whitespace-nowrap text-ave-orange font-medium">PBIT vs Budget</td>
-                            <td class="px-4 py-2 whitespace-nowrap text-gray-700">+£8.4k (£35.8k Actual)</td>
-                        </tr>
-                        <!-- Rows removed as requested -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- ============================================= -->
-        <!--         OPERATIONAL & PEOPLE KPIs (YTD)       -->
-        <!-- ============================================= -->
-        <div class="pt-4 border-t border-gray-200">
-            <h3 class="text-xl font-semibold text-ave-teal mb-4">Operational & People KPIs (YTD)</h3>
-
-            <div class="grid grid-cols-3 gap-4 mb-4">
-                <!-- KPI: Valid Ticket Compliance (56%) -->
-                <div class="bg-ave-teal text-white rounded-lg p-4 flex flex-col items-center justify-center min-h-[160px]">
-                    <!-- THE FIX: #04A192 56% (was 0) -->
-                    <div class="pie teal-box" style="background: conic-gradient(#f59e0b 56%, #04A192 56%);">
-                        <div class="absolute text-center">
-                            <span class="text-2xl font-bold text-white">56%</span>
-                        </div>
-                    </div>
-                    <p class="text-sm font-medium text-white mt-2 text-center">Valid Ticket Compliance</p>
-                </div>
-
-                <!-- KPI: Total Tickets (180) -->
-                <div class="bg-ave-teal text-white rounded-lg p-4 flex flex-col items-center justify-center min-h-[160px]">
-                    <p class="text-sm opacity-90 text-center">Total Tickets</p>
-                    <p class="text-5xl font-bold text-white">180</p>
-                </div>
-
-                <!-- KPI: Bespoke Menu Compliance (93%) -->
-                <div class="bg-ave-teal text-white rounded-lg p-4 flex flex-col items-center justify-center min-h-[160px]">
-                    <!-- THE FIX: #04A192 93% (was 0) -->
-                    <div class="pie teal-box" style="background: conic-gradient(#f59e0b 93%, #04A192 93%);">
-                        <div class="absolute text-center">
-                            <span class="text-2xl font-bold text-white">93%</span>
-                        </div>
-                    </div>
-                    <p class="text-sm font-medium text-white mt-2 text-center">Bespoke Menu Compliance</p>
-                </div>
-            </div>
-
-            <!-- People KPI - Orange Box (100%) -->
-            <div class="bg-ave-orange text-white rounded-lg p-4 text-center">
-                <p class="text-sm opacity-90">Mandatory Training Completion (YTD)</p>
-                <p class="text-4xl font-bold text-white">100%</p>
-            </div>
-        </div>
-
-        <!-- ============================================= -->
-        <!--          DETAILED REPORT TEXT                 -->
+        <!--          DETAILED REPORT TEXT (PAGES 2-3)     -->
         <!-- ============================================= -->
         <div class="pt-6 border-t border-gray-200 space-y-6">
             
-            <!-- Section 1: Commercial -->
-            <div>
-                <h3 class="text-xl font-semibold text-ave-teal mb-4">1. Commercial Summary</h3>
-                <p class="text-gray-700 text-sm leading-relaxed">
-                    AVE has delivered a <strong>strong start</strong> to FY26, with overall financial performance exceeding budget NP by £8.5k in P1. Revenue £6k ahead of Budget, Net £3k overheads underspend alongside key Investments. Favourable position in both wages and other overheads, with funds being strategically directed towards future growth drivers as outlined below.
-                </p>
+            <!-- ============================================= -->
+            <!--            PRINT PAGE 2: COMM & BD            -->
+            <!-- ============================================= -->
+            <div class="print-page-2">
+                <!-- Section 1: Commercial -->
+                <div>
+                    <h3 class="text-xl font-semibold text-ave-teal mb-4">1. Commercial Summary</h3>
+                    <p class="text-gray-700 text-sm leading-relaxed">
+                        AVE has delivered a <strong>strong start</strong> to FY26, with overall financial performance exceeding budget NP by £8.5k in P1. Revenue £6k ahead of Budget, Net £3k overheads underspend alongside key Investments. Favourable position in both wages and other overheads, with funds being strategically directed towards future growth drivers as outlined below.
+                    </p>
 
-                <h4 class="text-lg font-semibold text-ave-dark mt-4 mb-2">Commercial Performance (vs. Forecast)</h4>
-                <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
-                    <li><strong>Revenue:</strong> Achieved £6k above the monthly forecast.</li>
-                    <li><strong>Overheads:</strong> Currently favorable, resulting in a net £3k underspend (£1k in wages and £2k in other overheads) actively investing in the necessary infrastructure and resources for budgeted sales growth later in the year.</li>
-                    <li><strong>Net Profit:</strong> AVE Overall net profit position was positive by £8.4k, noting investment commitments for Q1.</li>
-                </ul>
-            </div>
-
-            <!-- Section 2: Business Development -->
-            <div>
-                <h3 class="text-xl font-semibold text-ave-teal mb-4">2. Business Development</h3>
-                
-                <div class="grid grid-cols-3 gap-4 text-center mb-4">
-                    <div class="bg-gray-50 p-3 rounded-lg">
-                        <p class="text-sm text-gray-500">Pipeline Value</p>
-                        <p class="text-2xl font-bold text-ave-dark">£14.6M</p>
-                    </div>
-                    <div class="bg-gray-50 p-3 rounded-lg">
-                        <p class="text-sm text-gray-500">Income Opportunity</p>
-                        <p class="text-2xl font-bold text-ave-dark">£733k</p>
-                    </div>
-                    <div class="bg-gray-50 p-3 rounded-lg">
-                        <p class="text-sm text-gray-500">No. of Opportunities</p>
-                        <p class="text-2xl font-bold text-ave-dark">39</p>
-                    </div>
+                    <h4 class="text-lg font-semibold text-ave-dark mt-4 mb-2">Commercial Performance (vs. Forecast)</h4>
+                    <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
+                        <li><strong>Revenue:</strong> Achieved £6k above the monthly forecast.</li>
+                        <li><strong>Overheads:</strong> Currently favorable, resulting in a net £3k underspend (£1k in wages and £2k in other overheads) actively investing in the necessary infrastructure and resources for budgeted sales growth later in the year.</li>
+                        <li><strong>Net Profit:</strong> AVE Overall net profit position was positive by £8.4k, noting investment commitments for Q1.</li>
+                    </ul>
                 </div>
 
-                <p class="text-gray-700 text-sm leading-relaxed mb-3">
-                    BDM Adam has now left the business, we are actively recruiting 2 new BDM roles and have 4 applicants progressing to interview.
-                </p>
-                <p class="text-gray-700 text-sm leading-relaxed mb-3">
-                    We have defined our Sales Strategy around Sectors, Businesses, Contacts and a sector / business specific approach. We refer to this as our <strong>Zebra approach</strong> and has delivered a 12-month database to target. Additionally we have built an annual calendar detailing which period we will target each sector and with which services will deliver highest conversion - ie Care & Hospitality with Disposables.
-                </p>
+                <!-- Section 2: Business Development -->
+                <div class="mt-6">
+                    <h3 class="text-xl font-semibold text-ave-teal mb-4">2. Business Development</h3>
+                    
+                    <div class="grid grid-cols-3 gap-4 text-center mb-4">
+                        <div class="bg-gray-50 p-3 rounded-lg">
+                            <p class="text-sm text-gray-500">Pipeline Value</p>
+                            <p class="text-2xl font-bold text-ave-dark">£14.6M</p>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-lg">
+                            <p class="text-sm text-gray-500">Income Opportunity</p>
+                            <p class="text-2xl font-bold text-ave-dark">£733k</p>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-lg">
+                            <p class="text-sm text-gray-500">No. of Opportunities</p>
+                            <p class="text-2xl font-bold text-ave-dark">39</p>
+                        </div>
+                    </div>
 
-                <h4 class="text-lg font-semibold text-ave-dark mt-4 mb-2">New Clients (October 25)</h4>
-                <ul class="list-disc list-inside text-gray-700 text-sm space-y-1 mb-3">
-                    <li><strong>Bankhouse Hotel & Spa</strong> - Foodservice</li>
-                    <li><strong>KingsCourt Hotel</strong> - Foodservice (Have also since started engaging with sister property to onboard)</li>
-                    <li><strong>Creme Care</strong> - Produce</li>
-                </ul>
+                    <p class="text-gray-700 text-sm leading-relaxed mb-3">
+                        BDM Adam has now left the business, we are actively recruiting 2 new BDM roles and have 4 applicants progressing to interview.
+                    </p>
+                    <p class="text-gray-700 text-sm leading-relaxed mb-3">
+                        We have defined our Sales Strategy around Sectors, Businesses, Contacts and a sector / business specific approach. We refer to this as our <strong>Zebra approach</strong> and has delivered a 12-month database to target. Additionally we have built an annual calendar detailing which period we will target each sector and with which services will deliver highest conversion - ie Care & Hospitality with Disposables.
+                    </p>
 
-                <h4 class="text-lg font-semibold text-ave-dark mt-4 mb-2">Strategy & Marketing</h4>
-                <ul class="list-disc list-inside text-gray-700 text-sm space-y-2">
-                    <li>Our telemarketing Campaign follows the GTM Strategy targeting Care with our known large savings in Disposables & Consumables.</li>
-                    <li>We are also working through Networking Strategy - DI has attended 5 events in October which have generated 4 active leads in Education.</li>
-                    <li>Agreed our GTM Strategy for Nutritional Services - this is now with Marketing to build an advertising suite of services for us to sell as a stand alone service.</li>
-                    <li><strong>PR / SEO / Brand Awareness:</strong> Proposal received from Henry Pepper & ‘Make more Noise’ PR agencies - 3 more being reviewed this week with aim to start in Nov 25.</li>
-                    <li><strong>Events:</strong> AVE are exhibiting at The School & Academies Show at the NEC 19th & 20th Oct - EW, AB & DI in attendance.</li>
-                </ul>
+                    <h4 class="text-lg font-semibold text-ave-dark mt-4 mb-2">New Clients (October 25)</h4>
+                    <ul class="list-disc list-inside text-gray-700 text-sm space-y-1 mb-3">
+                        <li><strong>Bankhouse Hotel & Spa</strong> - Foodservice</li>
+                        <li><strong>KingsCourt Hotel</strong> - Foodservice (Have also since started engaging with sister property to onboard)</li>
+                        <li><strong>Creme Care</strong> - Produce</li>
+                    </ul>
+
+                    <h4 class="text-lg font-semibold text-ave-dark mt-4 mb-2">Strategy & Marketing</h4>
+                    <ul class="list-disc list-inside text-gray-700 text-sm space-y-2">
+                        <li>Our telemarketing Campaign follows the GTM Strategy targeting Care with our known large savings in Disposables & Consumables.</li>
+                        <li>We are also working through Networking Strategy - DI has attended 5 events in October which have generated 4 active leads in Education.</li>
+                        <li>Agreed our GTM Strategy for Nutritional Services - this is now with Marketing to build an advertising suite of services for us to sell as a stand alone service.</li>
+                        <li><strong>PR / SEO / Brand Awareness:</strong> Proposal received from Henry Pepper & ‘Make more Noise’ PR agencies - 3 more being reviewed this week with aim to start in Nov 25.</li>
+                        <li><strong>Events:</strong> AVE are exhibiting at The School & Academies Show at the NEC 19th & 20th Oct - EW, AB & DI in attendance.</li>
+                    </ul>
+                </div>
             </div>
+            <!-- END OF PRINT PAGE 2 -->
 
-            <!-- Section 3: Procurement -->
+
+            <!-- ============================================= -->
+            <!--       PRINT PAGE 3: PROCUREMENT & OPS         -->
+            <!-- ============================================= -->
             <div>
-                <h3 class="text-xl font-semibold text-ave-teal mb-4">3. Procurement</h3>
-                <p class="text-gray-700 text-sm font-semibold">No Price Reviews in October 2025</p>
-                <h4 class="text-lg font-semibold text-ave-dark mt-4 mb-2">Projects</h4>
-                <ul class="list-disc list-inside text-gray-700 text-sm space-y-2">
-                    <li><strong>Paying the Bill:</strong> Engagement has increased to 15 suppliers. The novation document, including a guarantor draft, has been issued, and suppliers are now responding with approvals and queries. Development of an FAQ document will commence shortly.</li>
-                    <li><strong>Innovation - Brand Meetings:</strong> Brand meetings took place throughout October, with positive initial discussions around establishing direct manufacturer deals. Brands engaged include Heinz, Unilever, PepsiCo, Twinings, and Nestlé.</li>
-                    <li><strong>Innovation - Onboarding:</strong> Regency Clothing is now fully onboarded across two clients: Aspens and Miquill.</li>
-                    <li><strong>Innovation - Strategy:</strong> A Green Gourmet strategy meeting was held in October, focusing on market trends, product development, and the integration of AI within AVE to enhance future initiatives.</li>
-                    <li><strong>Sustainability:</strong> Net Zero Now carbon report has been received, with client presentations scheduled to commence in Q1.</li>
-                </ul>
-            </div>
+                <!-- Section 3: Procurement -->
+                <div class="mt-6">
+                    <h3 class="text-xl font-semibold text-ave-teal mb-4">3. Procurement</h3>
+                    <p class="text-gray-700 text-sm font-semibold">No Price Reviews in October 2025</p>
+                    <h4 class="text-lg font-semibold text-ave-dark mt-4 mb-2">Projects</h4>
+                    <ul class="list-disc list-inside text-gray-700 text-sm space-y-2">
+                        <li><strong>Paying the Bill:</strong> Engagement has increased to 15 suppliers. The novation document, including a guarantor draft, has been issued, and suppliers are now responding with approvals and queries. Development of an FAQ document will commence shortly.</li>
+                        <li><strong>Innovation - Brand Meetings:</strong> Brand meetings took place throughout October, with positive initial discussions around establishing direct manufacturer deals. Brands engaged include Heinz, Unilever, PepsiCo, Twinings, and Nestlé.</li>
+                        <li><strong>Innovation - Onboarding:</strong> Regency Clothing is now fully onboarded across two clients: Aspens and Miquill.</li>
+                        <li><strong>Innovation - Strategy:</strong> A Green Gourmet strategy meeting was held in October, focusing on market trends, product development, and the integration of AI within AVE to enhance future initiatives.</li>
+                        <li><strong>Sustainability:</strong> Net Zero Now carbon report has been received, with client presentations scheduled to commence in Q1.</li>
+                    </ul>
+                </div>
 
-            <!-- Section 4: Operations -->
-            <div>
-                <h3 class="text-xl font-semibold text-ave-teal mb-4">4. Operations & Client Services</h3>
-                <h4 class="text-lg font-semibold text-ave-dark mt-4 mb-2">Projects</h4>
-                <ul class="list-disc list-inside text-gray-700 text-sm space-y-2">
-                    <li><strong>Paying the Bill:</strong> The project is progressing as planned and the go/ no go decision will be made on the 13th November for a go live of early December. Communication(s) will be sent from AVE, to clients, updating them on the changes to Procure Wizard and Mini Markets.</li>
-                    <li><strong>CRM and Client Services ticketing system:</strong> The Halo CRM migration from Halo ITSM was successful. All new client services tickets, sales opportunities, and F&N work are now fully functional in the new system. Unfortunately, due to complications with the way that tickets were migrated, the statistics for the previous month will not be accurate, hence the lower scores in the table below.</li>
-                    <li><strong>New:</strong> We are now displaying the ticket dashboard performance on screens across the office.</li>
-                </ul>
+                <!-- Section 4: Operations -->
+                <div class="mt-6">
+                    <h3 class="text-xl font-semibold text-ave-teal mb-4">4. Operations & Client Services</h3>
+                    <h4 class="text-lg font-semibold text-ave-dark mt-4 mb-2">Projects</h4>
+                    <ul class="list-disc list-inside text-gray-700 text-sm space-y-2">
+                        <li><strong>Paying the Bill:</strong> The project is progressing as planned and the go/ no go decision will be made on the 13th November for a go live of new_text="early December. Communication(s) will be sent from AVE, to clients, updating them on the changes to Procure Wizard and Mini Markets.</li>
+                        <li><strong>CRM and Client Services ticketing system:</strong> The Halo CRM migration from Halo ITSM was successful. All new client services tickets, sales opportunities, and F&N work are now fully functional in the new system. Unfortunately, due to complications with the way that tickets were migrated, the statistics for the previous month will not be accurate, hence the lower scores in the table below.</li>
+                        <li><strong>New:</strong> We are now displaying the ticket dashboard performance on screens across the office.</li>
+                    </ul>
+                </div>
             </div>
+            <!-- END OF PRINT PAGE 3 -->
 
         </div>
 
