@@ -102,20 +102,35 @@
                 padding-bottom: 0;
                 margin-bottom: 0;
             }
-            /* MORE AGGRESSIVE SQUEEZE FOR PAGE 1 */
-            .print-page-1 .mt-6 {
-                margin-top: 1rem; /* was 1.5rem */
+
+            /* --- AGGRESSIVE SQUEEZE FOR PAGE 1 --- */
+            .print-page-1 .mt-6 { margin-top: 1rem; }
+            .print-page-1 .mb-4 { margin-bottom: 0.5rem; }
+            .print-page-1 .space-y-6 { row-gap: 1rem; }
+            .print-page-1 .pt-4 { padding-top: 1rem; }
+
+            /* Squeeze Commercial KPI boxes */
+            .print-page-1 .commercial-kpi-box {
+                padding: 0.5rem; /* reduce padding */
             }
-            .print-page-1 .mb-4 {
-                margin-bottom: 0.5rem; /* was 1rem */
+            .print-page-1 .commercial-kpi-box .text-3xl {
+                font-size: 1.5rem; /* 24px */
             }
-            .print-page-1 .space-y-6 {
-                row-gap: 1rem; /* was 1.5rem */
+            .print-page-1 .commercial-kpi-box .text-sm {
+                font-size: 0.75rem; /* 12px */
             }
-            /* Squeeze padding on gray boxes */
-            .print-page-1 .bg-gray-50.rounded-lg.p-4 {
-                padding: 0.75rem;
+            /* Squeeze donut chart box */
+            .print-page-1 .commercial-donut-box {
+                padding: 0.5rem;
             }
+            .print-page-1 .commercial-donut-box .pie {
+                width: 90px;
+                height: 90px;
+            }
+            .print-page-1 .commercial-donut-box .pie .text-2xl {
+                font-size: 1.25rem; /* 20px */
+            }
+            
             /* Remove min-height on teal boxes */
             .print-page-1 .min-h-\[160px\] {
                 min-height: auto;
@@ -127,11 +142,8 @@
                 padding: 0.75rem;
             }
             /* Squeeze padding on In-Month table box */
-            .print-page-1 .bg-gray-50.p-4.rounded-lg {
+            .print-page-1 .in-month-box {
                 padding: 0.75rem;
-            }
-            .print-page-1 .pt-4 {
-                padding-top: 1rem;
             }
             /* --- End Aggressive Squeeze --- */
 
@@ -180,20 +192,20 @@
                 <h3 class="text-xl font-semibold text-ave-teal mb-4">Commercial KPIs (YTD)</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     
-                    <div class="bg-gray-50 rounded-lg p-4 text-center">
+                    <div class="bg-gray-50 rounded-lg p-4 text-center commercial-kpi-box">
                         <p class="text-sm text-gray-500">Revenue vs Budget</p>
                         <p class="text-3xl font-bold text-ave-orange">+£5k</p>
                         <p class="text-sm text-gray-700">(£199k Actual)</p>
                     </div>
 
-                    <div class="bg-gray-50 rounded-lg p-4 text-center">
+                    <div class="bg-gray-50 rounded-lg p-4 text-center commercial-kpi-box">
                         <p class="text-sm text-gray-500">PBIT vs Budget</p>
                         <p class="text-3xl font-bold text-ave-orange">+£8.4k</p>
                         <p class="text-sm text-gray-700">(£35.8k Actual)</p>
                     </div>
 
                     <!-- KPI 3: Conversion Chart (12%) -->
-                    <div class="bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center">
+                    <div class="bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center commercial-donut-box">
                         <!-- THIS IS THE CRITICAL FIX - 12% not 0% -->
                         <div class="pie gray-box" style="background: conic-gradient(#f59e0b 12%, #e5e7eb 12%);">
                             <div class="absolute text-center">
@@ -208,7 +220,7 @@
             <!-- ============================================= -->
             <!--           IN-MONTH PERFORMANCE                -->
             <!-- ============================================= -->
-            <div class="pt-4 mt-6 border-t border-gray-200 bg-gray-50 p-4 rounded-lg">
+            <div class="pt-4 mt-6 border-t border-gray-200 bg-gray-50 p-4 rounded-lg in-month-box">
                 <h3 class="text-xl font-semibold text-ave-teal mb-4">In-Month Performance</h3>
                 
                 <div class="overflow-x-auto rounded-lg border border-gray-200">
@@ -286,7 +298,7 @@
         <!-- ============================================= -->
         <!--          DETAILED REPORT TEXT (PAGES 2-3)     -->
         <!-- ============================================= -->
-        <div class->
+        <div class="pt-6 border-t border-gray-200 space-y-6">
             
             <!-- ============================================= -->
             <!--         PRINT PAGE 2: COMM & PROCUREMENT      -->
@@ -320,7 +332,15 @@
                         <li><strong>Sustainability:</strong> Net Zero Now carbon report has been received, with client presentations scheduled to commence in Q1.</li>
                     </ul>
                 </div>
-Section 2: Business Development -->
+            </div>
+            <!-- END OF PRINT PAGE 2 -->
+
+
+            <!-- ============================================= -->
+            <!--         PRINT PAGE 3: BD & OPS                -->
+            <!-- ============================================= -->
+            <div>
+                <!-- Section 2: Business Development -->
                 <div class="mt-6">
                     <h3 class="text-xl font-semibold text-ave-teal mb-4">2. Business Development</h3>
                     
