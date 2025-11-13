@@ -95,22 +95,45 @@
                  -webkit-print-color-adjust: exact;
                  print-color-adjust: exact;
             }
+            
             /* --- Page Break Classes --- */
             .print-page-1 {
                 break-after: page;
-                /* COMPACT LAYOUT FOR PRINT */
                 padding-bottom: 0;
                 margin-bottom: 0;
             }
-            .print-page-1 .min-h-\[160px\] {
-                min-height: 140px; /* Squeeze height */
+            /* MORE AGGRESSIVE SQUEEZE FOR PAGE 1 */
+            .print-page-1 .mt-6 {
+                margin-top: 1rem; /* was 1.5rem */
             }
             .print-page-1 .mb-4 {
-                margin-bottom: 0.75rem; /* Squeeze margins */
+                margin-bottom: 0.5rem; /* was 1rem */
             }
             .print-page-1 .space-y-6 {
-                row-gap: 1rem;
+                row-gap: 1rem; /* was 1.5rem */
             }
+            /* Squeeze padding on gray boxes */
+            .print-page-1 .bg-gray-50.rounded-lg.p-4 {
+                padding: 0.75rem;
+            }
+            /* Remove min-height on teal boxes */
+            .print-page-1 .min-h-\[160px\] {
+                min-height: auto;
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+            }
+            /* Squeeze padding on orange box */
+            .print-page-1 .bg-ave-orange.rounded-lg.p-4 {
+                padding: 0.75rem;
+            }
+            /* Squeeze padding on In-Month table box */
+            .print-page-1 .bg-gray-50.p-4.rounded-lg {
+                padding: 0.75rem;
+            }
+            .print-page-1 .pt-4 {
+                padding-top: 1rem;
+            }
+            /* --- End Aggressive Squeeze --- */
 
             .print-page-2 {
                 break-after: page;
@@ -263,7 +286,7 @@
         <!-- ============================================= -->
         <!--          DETAILED REPORT TEXT (PAGES 2-3)     -->
         <!-- ============================================= -->
-        <div class="pt-6 border-t border-gray-200 space-y-6">
+        <div class->
             
             <!-- ============================================= -->
             <!--         PRINT PAGE 2: COMM & PROCUREMENT      -->
@@ -297,15 +320,7 @@
                         <li><strong>Sustainability:</strong> Net Zero Now carbon report has been received, with client presentations scheduled to commence in Q1.</li>
                     </ul>
                 </div>
-            </div>
-            <!-- END OF PRINT PAGE 2 -->
-
-
-            <!-- ============================================= -->
-            <!--       PRINT PAGE 3: BIZ DEV & OPS             -->
-            <!-- ============================================= -->
-            <div>
-                <!-- Section 2: Business Development -->
+Section 2: Business Development -->
                 <div class="mt-6">
                     <h3 class="text-xl font-semibold text-ave-teal mb-4">2. Business Development</h3>
                     
