@@ -41,7 +41,6 @@
           border-radius: 50%;
           width: 70%;
           height: 70%;
-          /* This MUST match the background of the box it sits in */
         }
         /* Hole for chart in 'bg-gray-50' (#f9fafb) */
         .pie.gray-box:before {
@@ -99,7 +98,7 @@
             /* --- Page Break Classes --- */
             .print-page-1 {
                 break-after: page;
-                padding-top: 1.5rem; /* Add some space at the top of new page */
+                padding-top: 1rem;
             }
             
             .print-page-2 {
@@ -129,10 +128,14 @@
                 padding: 0.5rem;
             }
             .print-page-2 .commercial-donut-box .pie {
-                width: 90px;
-                height: 90px;
+                width: 90px !important; /* Force smaller size */
+                height: 90px !important;
             }
-            .print-page-2 .commercial-donut-box .pie .text-2xl {
+            .print-page-2 .commercial-donut-box .pie:before {
+                width: 65%; /* Readjust hole */
+                height: 65%;
+            }
+            .print-page-2 .commercial-donut-box .text-2xl {
                 font-size: 1.25rem; /* 20px */
             }
             
@@ -153,7 +156,7 @@
             /* --- End Aggressive Squeeze --- */
             
             .print-page-3 {
-                 padding-top: 1.5rem; /* Add some space at the top of new page */
+                 padding-top: 1.5rem;
             }
         }
         /* --- END OF PRINT STYLES --- */
@@ -175,8 +178,19 @@
         <!-- ============================================= -->
         <div class="flex justify-between items-center border-b pb-4 border-gray-200">
             <div>
-                <!-- Replaced text logo with uploaded image -->
-                <img src="image_19d0a6.png" alt="AVE Logo" class="h-16 w-auto">
+                <!-- 
+                    CODE-GENERATED LOGO 
+                    Recreates the "AVE" image perfectly in CSS to prevent loading errors.
+                -->
+                <div class="flex flex-col items-start">
+                    <div class="flex items-center space-x-3 md:space-x-4">
+                        <span class="text-5xl md:text-6xl font-bold text-ave-teal tracking-tighter">A</span>
+                        <div class="h-10 md:h-12 w-px bg-gray-300"></div>
+                        <span class="text-5xl md:text-6xl font-bold text-ave-orange tracking-tighter">V</span>
+                        <div class="h-10 md:h-12 w-px bg-gray-300"></div>
+                        <span class="text-5xl md:text-6xl font-bold text-ave-teal tracking-tighter">E</span>
+                    </div>
+                </div>
             </div>
             <div class="text-right">
                 <h2 class="text-xl font-bold text-ave-dark">Board KPI Dashboard</h2>
@@ -188,8 +202,7 @@
         <!--         PRINT PAGE 1: MD SUMMARY              -->
         <!-- ============================================= -->
         <div class="print-page-1">
-            <!-- NEW MD SUMMARY SECTION -->
-            <div class="pt-6">
+            <div class="pt-2">
                 <h3 class="text-xl font-semibold text-ave-teal mb-4">Managing Directors Executive Summary & Strategic Context</h3>
                 <p class="text-gray-700 text-sm leading-relaxed mb-3">
                     We start the first financial period of the year with a clear focus on 3 key pillars of the business. <strong>People. Foundations & Growth.</strong>
@@ -228,10 +241,9 @@
 
                     <!-- KPI 3: Conversion Chart (12%) -->
                     <div class="bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center commercial-donut-box">
-                        <!-- THIS IS THE CRITICAL FIX - 12% not 0% -->
                         <div class="pie gray-box" style="background: conic-gradient(#f59e0b 12%, #e5e7eb 12%);">
                             <div class="absolute text-center">
-                                <span class="text-2xl font-bold text-ave-dark">12%</span>
+                                <span class="text-2xl font-bold text-ave-dark donut-chart-text">12%</span>
                             </div>
                         </div>
                         <p class="text-sm font-medium text-ave-dark mt-2">New Business Conversion</p>
@@ -280,10 +292,9 @@
                 <div class="grid grid-cols-3 gap-4 mb-4">
                     <!-- KPI: Valid Ticket Compliance (56%) -->
                     <div class="bg-ave-teal text-white rounded-lg p-4 flex flex-col items-center justify-center min-h-[160px]">
-                        <!-- THIS IS THE CRITICAL FIX - 56% not 0% -->
                         <div class="pie teal-box" style="background: conic-gradient(#f59e0b 56%, #e0f2f1 56%);">
                             <div class="absolute text-center">
-                                <span class="text-2xl font-bold text-white">56%</span>
+                                <span class="text-2xl font-bold text-white donut-chart-text">56%</span>
                             </div>
                         </div>
                         <p class="text-sm font-medium text-white mt-2 text-center">Valid Ticket Compliance</p>
@@ -297,10 +308,9 @@
 
                     <!-- KPI: Bespoke Menu Compliance (93%) -->
                     <div class="bg-ave-teal text-white rounded-lg p-4 flex flex-col items-center justify-center min-h-[160px]">
-                        <!-- THIS IS THE CRITICAL FIX - 93% not 0% -->
                         <div class="pie teal-box" style="background: conic-gradient(#f59e0b 93%, #e0f2f1 93%);">
                             <div class="absolute text-center">
-                                <span class="text-2xl font-bold text-white">93%</span>
+                                <span class="text-2xl font-bold text-white donut-chart-text">93%</span>
                             </div>
                         </div>
                         <p class="text-sm font-medium text-white mt-2 text-center">Bespoke Menu Compliance</p>
@@ -309,7 +319,7 @@
 
                 <!-- People KPI - Orange Box (100%) -->
                 <div class="bg-ave-orange text-white rounded-lg p-4 text-center">
-                    <p class="text-sm opacity-90">MandATORY Training Completion (YTD)</p>
+                    <p class="text-sm opacity-90">Mandatory Training Completion (YTD)</p>
                     <p class="text-4xl font-bold text-white">100%</p>
                 </div>
             </div>
@@ -341,8 +351,22 @@
                     </ul>
                 </div>
 
+                <!-- Section 3: Procurement -->
+                <div class="mt-6">
+                    <h3 class="text-xl font-semibold text-ave-teal mb-4">3. Procurement</h3>
+                    <p class="text-gray-700 text-sm font-semibold">No Price Reviews in October 2025</p>
+                    <h4 class="text-lg font-semibold text-ave-dark mt-4 mb-2">Projects</h4>
+                    <ul class="list-disc list-inside text-gray-700 text-sm space-y-2">
+                        <li><strong>Paying the Bill:</strong> Engagement has increased to 15 suppliers. The novation document, including a guarantor draft, has been issued, and suppliers are now responding with approvals and queries. Development of an FAQ document will commence shortly.</li>
+                        <li><strong>Innovation - Brand Meetings:</strong> Brand meetings took place throughout October, with positive initial discussions around establishing direct manufacturer deals. Brands engaged include Heinz, Unilever, PepsiCo, Twinings, and Nestlé.</li>
+                        <li><strong>Innovation - Onboarding:</strong> Regency Clothing is now fully onboarded across two clients: Aspens and Miquill.</li>
+                        <li><strong>Innovation - Strategy:</strong> A Green Gourmet strategy meeting was held in October, focusing on market trends, product development, and the integration of AI within AVE to enhance future initiatives.</li>
+                        <li><strong>Sustainability:</strong> Net Zero Now carbon report has been received, with client presentations scheduled to commence in Q1.</li>
+                    </ul>
+                </div>
+
                 <!-- Section 2: Business Development -->
-                <div>
+                <div class="mt-6">
                     <h3 class="text-xl font-semibold text-ave-teal mb-4">2. Business Development</h3>
                     
                     <div class="grid grid-cols-3 gap-4 text-center mb-4">
@@ -384,27 +408,13 @@
                     </ul>
                 </div>
 
-                <!-- Section 3: Procurement -->
-                <div>
-                    <h3 class="text-xl font-semibold text-ave-teal mb-4">3. Procurement</h3>
-                    <p class="text-gray-700 text-sm font-semibold">No Price Reviews in October 2025</p>
-                    <h4 class="text-lg font-semibold text-ave-dark mt-4 mb-2">Projects</h4>
-                    <ul class="list-disc list-inside text-gray-700 text-sm space-y-2">
-                        <li><strong>Paying the Bill:</strong> Engagement has increased to 15 suppliers. The novation document, including a guarantor draft, has been issued, and suppliers are now responding with approvals and queries. Development of an FAQ document will commence shortly.</li>
-                        <li><strong>Innovation - Brand Meetings:</strong> Brand meetings took place throughout October, with positive initial discussions around establishing direct manufacturer deals. Brands engaged include Heinz, Unilever, PepsiCo, Twinings, and Nestlé.</li>
-                        <li><strong>Innovation - Onboarding:</strong> Regency Clothing is now fully onboarded across two clients: Aspens and Miquill.</li>
-                        <li><strong>Innovation - Strategy:</strong> A Green Gourmet strategy meeting was held in October, focusing on market trends, product development, and the integration of AI within AVE to enhance future initiatives.</li>
-                        <li><strong>Sustainability:</strong> Net Zero Now carbon report has been received, with client presentations scheduled to commence in Q1.</li>
-                    </ul>
-                </div>
-
                 <!-- Section 4: Operations -->
-                <div>
+                <div class="mt-6">
                     <h3 class="text-xl font-semibold text-ave-teal mb-4">4. Operations & Client Services</h3>
                     <h4 class="text-lg font-semibold text-ave-dark mt-4 mb-2">Projects</h4>
                     <ul class="list-disc list-inside text-gray-700 text-sm space-y-2">
                         <li><strong>Paying the Bill:</strong> The project is progressing as planned and the go/ no go decision will be made on the 13th November for a go live of early December. Communication(s) will be sent from AVE, to clients, updating them on the changes to Procure Wizard and Mini Markets.</li>
-                        <li><strong>CRM and Client Services ticketing system:</strong> The Halo CRM migration from Halo ITSM was successful. All new client services tickets, sales opportunities, and F&N work are now fully functional in the new system. Unfortunately, due to complications with the way that tickets were migrated, the statistics for the previous month will not be accurate, hence the lower scores in the table below.</li>
+                        <li><strong>CRM and Client Services ticketing system:</strong> The Halo CRM migration from Halo ITSM was successful. All new client services tickets, sales opportunities, and F&N work are now fully functional in the new system. Unfortunately, due-to-date complications with the way that tickets were migrated, the statistics for the previous month will not be accurate, hence the lower scores in the table below.</li>
                         <li><strong>New:</strong> We are now displaying the ticket dashboard performance on screens across the office.</li>
                     </ul>
                 </div>
