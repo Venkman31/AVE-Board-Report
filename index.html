@@ -3,61 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Updated Title -->
-    <title>Board KPI Dashboard - October 2025</title>
+    <title>Full Board Report - October 2025</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            /* Define the brand colors */
             --ave-teal: #009688;
             --ave-orange: #f59e0b;
             --ave-dark: #374151;
         }
-        .bg-ave-teal { background-color: var(--ave-teal); }
-        .text-ave-teal { color: var(--ave-teal); }
-        .bg-ave-orange { background-color: var(--ave-orange); }
-        .text-ave-orange { color: var(--ave-orange); }
-        .text-ave-dark { color: var(--ave-dark); }
-        .border-ave-teal { border-color: var(--ave-teal); }
-
-        /* CSS-only Donut Chart 
-          Uses a conic-gradient for the chart and a pseudo-element for the "hole".
-        */
-        .pie {
-          width: 120px;
-          height: 120px;
-          border-radius: 50%;
-          position: relative;
-          display: grid;
-          place-items: center;
-        }
-        .pie.teal-box {
-          width: 100px; /* Smaller for the teal box */
-          height: 100px;
-        }
-        /* This pseudo-element creates the donut hole */
-        .pie:before {
-          content: "";
-          position: absolute;
-          border-radius: 50%;
-          width: 70%;
-          height: 70%;
-          /* This MUST match the background of the box it sits in */
-          /* This one sits in 'bg-gray-50' (#f9fafb) */
-          background: #f9fafb; 
-        }
-        /* Specific override for charts in the teal box */
-        .pie.teal-box:before {
-          /* This MUST match its container, 'bg-ave-teal' (#009688) */
-          background: #009688;
-        }
+        .bg-ave-teal { background-color: #009688; }
+        .text-ave-teal { color: #009688; }
+        .bg-ave-orange { background-color: #f59e0b; }
+        .text-ave-orange { color: #f59e0b; }
+        .text-ave-dark { color: #374151; }
+        .border-ave-teal { border-color: #009688; }
     </style>
 </head>
 <body class="bg-gray-100 p-4 md:p-8">
 
-    <!-- Single Page Layout -->
     <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-2xl shadow-lg flex flex-col space-y-6">
 
         <!-- ============================================= -->
@@ -65,51 +30,58 @@
         <!-- ============================================= -->
         <div class="flex justify-between items-center border-b pb-4 border-gray-200">
             <div>
-                <!-- Logo text style -->
                 <h1 class="text-4xl font-bold tracking-tight">
                     <span class="text-ave-teal">A</span><span class="text-ave-orange">V</span><span class="text-ave-teal">E</span>
                 </h1>
                 <p class="text-xs font-medium text-gray-500 tracking-wider">ADDED VALUE ENTERPRISES</p>
             </div>
             <div class="text-right">
-                <!-- Updated Title -->
                 <h2 class="text-xl font-bold text-ave-dark">Board KPI Dashboard</h2>
                 <p class="text-sm text-gray-500">October 2025</p>
             </div>
         </div>
 
         <!-- ============================================= -->
-        <!--             COMMERCIAL KPIs                   -->
+        <!--             COMMERCIAL KPIs (YTD)             -->
         <!-- ============================================= -->
         <div>
-            <!-- Header: Larger and in Teal -->
             <h3 class="text-xl font-semibold text-ave-teal mb-4">Commercial KPIs (YTD)</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 
-                <!-- KPI 1: Revenue -->
                 <div class="bg-gray-50 rounded-lg p-4 text-center">
                     <p class="text-sm text-gray-500">Revenue vs Budget</p>
                     <p class="text-3xl font-bold text-ave-orange">+£5k</p>
                     <p class="text-sm text-gray-700">(£199k Actual)</p>
                 </div>
 
-                <!-- KPI 2: PBIT -->
                 <div class="bg-gray-50 rounded-lg p-4 text-center">
                     <p class="text-sm text-gray-500">PBIT vs Budget</p>
                     <p class="text-3xl font-bold text-ave-orange">+£8.4k</p>
                     <p class="text-sm text-gray-700">(£35.8k Actual)</p>
                 </div>
 
-                <!-- KPI 3: Conversion Chart -->
+                <!-- KPI 3: Conversion Chart (12%) - TRANSFORM ATTR -->
                 <div class="bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center">
-                    <!-- 
-                      Chart: 21%
-                      FIXED: The second percentage was "0", now it's "21%"
-                    -->
-                    <div class="pie" style="background: conic-gradient(#f59e0b 21%, #e5e7eb 21%);">
-                        <div class="absolute text-center">
-                            <span class="text-2xl font-bold text-ave-dark">21%</span>
-                        </div>
+                    <div class="relative w-[120px] h-[120px]">
+                        <svg class="w-full h-full" viewBox="0 0 100 100">
+                            <!-- Background Circle -->
+                            <circle cx="50" cy="50" r="40"
+                                style="stroke: #e5e7eb; stroke-width: 15; fill: none;">
+                            </circle>
+                            <!-- Foreground Circle (12%) -->
+                            <!-- C = 2 * pi * 40 = 251.2 -->
+                            <circle cx="50" cy="50" r="40"
+                                style="stroke: #f59e0b; stroke-width: 15; fill: none; stroke-linecap: round;"
+                                stroke-dasharray="251.2"
+                                stroke-dashoffset="221.056" 
+                                transform="rotate(-90 50 50)"> <!-- MOVED TRANSFORM HERE -->
+                            </circle>
+                            <!-- Text -->
+                            <text x="50%" y="50%"
+                                style="font-size: 24px; font-weight: bold; fill: #374151; font-family: 'Inter', sans-serif; text-anchor: middle; dominant-baseline: middle;">
+                                12%
+                            </text>
+                        </svg>
                     </div>
                     <p class="text-sm font-medium text-ave-dark mt-2">New Business Conversion</p>
                 </div>
@@ -119,12 +91,9 @@
         <!-- ============================================= -->
         <!--           IN-MONTH PERFORMANCE                -->
         <!-- ============================================= -->
-        <!-- This section is now wrapped in a light gray box to stand out -->
         <div class="pt-4 border-t border-gray-200 bg-gray-50 p-4 rounded-lg">
-            <!-- Header: Larger and in Teal -->
             <h3 class="text-xl font-semibold text-ave-teal mb-4">In-Month Performance</h3>
             
-            <!-- Branded Table -->
             <div class="overflow-x-auto rounded-lg border border-gray-200">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-ave-teal">
@@ -146,78 +115,177 @@
                             <td class="px-4 py-2 whitespace-nowrap text-ave-orange font-medium">PBIT vs Budget</td>
                             <td class="px-4 py-2 whitespace-nowrap text-gray-700">+£8.4k (£35.8k Actual)</td>
                         </tr>
-                        <tr>
-                            <td class="px-4 py-2 whitespace-nowrap text-ave-orange font-medium">New Business Conversion</td>
-                            <td class="px-4 py-2 whitespace-nowrap text-gray-700">20%</td>
-                        </tr>
-                        <tr>
-                            <td class="px-4 py-2 whitespace-nowrap text-ave-orange font-medium">Mandatory Training</td>
-                            <td class="px-4 py-2 whitespace-nowrap text-gray-700">4 Completions</td>
-                        </tr>
+                        <!-- Removed redundant rows -->
                     </tbody>
                 </table>
             </div>
         </div>
 
         <!-- ============================================= -->
-        <!--             OPERATIONAL & PEOPLE KPIs           -->
+        <!--         OPERATIONAL & PEOPLE KPIs (YTD)       -->
         <!-- ============================================= -->
         <div class="pt-4 border-t border-gray-200">
-            <!-- Header: Larger and in Teal -->
             <h3 class="text-xl font-semibold text-ave-teal mb-4">Operational & People KPIs (YTD)</h3>
 
-            <!-- Row of 3 Teal Boxes -->
             <div class="grid grid-cols-3 gap-4 mb-4">
-                <!-- KPI: Ticket Success -->
-                <div class="bg-ave-teal text-white rounded-lg p-4 flex flex-col items-center justify-center">
-                    <!-- 
-                      Chart: 56%
-                      FIXED: The second percentage was "0", now it's "56%"
-                      NOTE: #e0f2f1 is a light teal, used as the "gray" background for this chart
-                    -->
-                    <div class="pie teal-box" style="background: conic-gradient(#f59e0b 56%, #e0f2f1 56%);">
-                        <div class="absolute text-center">
-                            <span class="text-2xl font-bold text-white">56%</span>
-                        </div>
+                <!-- KPI: Valid Ticket Compliance (56%) - TRANSFORM ATTR -->
+                <div class="bg-ave-teal text-white rounded-lg p-4 flex flex-col items-center justify-center min-h-[160px]">
+                    <div class="relative w-[100px] h-[100px]">
+                        <svg class="w-full h-full" viewBox="0 0 100 100">
+                            <!-- Background Circle -->
+                            <circle cx="50" cy="50" r="40"
+                                style="stroke: #04A192; stroke-width: 15; fill: none;">
+                            </circle>
+                            <!-- Foreground Circle (56%) -->
+                            <circle cx="50" cy="50" r="40"
+                                style="stroke: #f59e0b; stroke-width: 15; fill: none; stroke-linecap: round;"
+                                stroke-dasharray="251.2"
+                                stroke-dashoffset="110.528" 
+                                transform="rotate(-90 50 50)"> <!-- MOVED TRANSFORM HERE -->
+                            </circle>
+                            <!-- Text -->
+                            <text x="50%" y="50%"
+                                style="font-size: 24px; font-weight: bold; fill: #ffffff; font-family: 'Inter', sans-serif; text-anchor: middle; dominant-baseline: middle;">
+                                56%
+                            </text>
+                        </svg>
                     </div>
-                    <p class="text-sm font-medium text-white mt-2 text-center">Ticket Success KPI</p>
+                    <p class="text-sm font-medium text-white mt-2 text-center">Valid Ticket Compliance</p>
                 </div>
 
-                <!-- KPI: Total Tickets -->
-                <div class="bg-ave-teal text-white rounded-lg p-4 flex flex-col items-center justify-center">
-                    <!-- 
-                      Chart: 62%
-                      FIXED: The second percentage was "0", now it's "62%"
-                    -->
-                    <div class="pie teal-box" style="background: conic-gradient(#f59e0b 62%, #e0f2f1 62%);">
-                        <div class="absolute text-center">
-                            <span class="text-2xl font-bold text-white">62%</span>
-                        </div>
-                    </div>
-                    <p class="text-sm font-medium text-white mt-2 text-center">Total Tickets</p>
+                <!-- KPI: Total Tickets (180) -->
+                <div class="bg-ave-teal text-white rounded-lg p-4 flex flex-col items-center justify-center min-h-[160px]">
+                    <p class="text-sm opacity-90 text-center">Total Tickets</p>
+                    <p class="text-5xl font-bold text-white">180</p>
                 </div>
 
-                <!-- KPI: Nutrition Turnaround -->
-                <div class="bg-ave-teal text-white rounded-lg p-4 flex flex-col items-center justify-center">
-                    <!-- 
-                      Chart: 92.5%
-                      FIXED: The second percentage was "0", now it's "92.5%"
-                    -->
-                    <div class="pie teal-box" style="background: conic-gradient(#f59e0b 92.5%, #e0f2f1 92.5%);">
-                        <div class="absolute text-center">
-                            <span class="text-2xl font-bold text-white">92.5%</span>
-                        </div>
+                <!-- KPI: Bespoke Menu Compliance (92.5%) - TRANSFORM ATTR -->
+                <div class="bg-ave-teal text-white rounded-lg p-4 flex flex-col items-center justify-center min-h-[160px]">
+                    <div class="relative w-[100px] h-[100px]">
+                        <svg class="w-full h-full" viewBox="0 0 100 100">
+                            <!-- Background Circle -->
+                            <circle cx="50" cy="50" r="40"
+                                style="stroke: #04A192; stroke-width: 15; fill: none;">
+                            </circle>
+                            <!-- Foreground Circle (92.5%) -->
+                            <circle cx="50" cy="50" r="40"
+                                style="stroke: #f59e0b; stroke-width: 15; fill: none; stroke-linecap: round;"
+                                stroke-dasharray="251.2"
+                                stroke-dashoffset="18.84" 
+                                transform="rotate(-90 50 50)"> <!-- MOVED TRANSFORM HERE -->
+                            </circle>
+                            <!-- Text -->
+                            <text x="50%" y="50%"
+                                style="font-size: 24px; font-weight: bold; fill: #ffffff; font-family: 'Inter', sans-serif; text-anchor: middle; dominant-baseline: middle;">
+                                92.5%
+                            </text>
+                        </svg>
                     </div>
-                    <p class="text-sm font-medium text-white mt-2 text-center">Nutrition Menu Turnaround</p>
+                    <p class="text-sm font-medium text-white mt-2 text-center">Bespoke Menu Compliance</p>
                 </div>
             </div>
 
-            <!-- People KPI - Orange Box -->
+            <!-- People KPI - Orange Box (100%) -->
             <div class="bg-ave-orange text-white rounded-lg p-4 text-center">
                 <p class="text-sm opacity-90">Mandatory Training Completion (YTD)</p>
-                <!-- Text is white to contrast with orange -->
-                <p class="text-4xl font-bold text-white">8</p>
+                <p class="text-4xl font-bold text-white">100%</p>
             </div>
+        </div>
+
+        <!-- ============================================= -->
+        <!--          DETAILED REPORT TEXT                 -->
+        <!-- ============================================= -->
+        <div class="pt-6 border-t border-gray-200 space-y-6">
+            
+            <!-- Section 1: Commercial -->
+            <div>
+                <h3 class="text-xl font-semibold text-ave-teal mb-4">1. Commercial Summary</h3>
+                <p class="text-gray-700 text-sm leading-relaxed">
+                    <!-- UPDATED TEXT -->
+                    AVE has delivered a <strong>strong start</strong> to FY26, with overall financial performance exceeding budget NP by £8.5k in P1. Revenue £6k ahead of Budget, Net £3k overheads underspend alongside key Investments. Favourable position in both wages and other overheads, with funds being strategically directed towards future growth drivers as outlined below.
+                </p>
+
+                <h4 class="text-lg font-semibold text-ave-dark mt-4 mb-2">Commercial Performance (vs. Forecast)</h4>
+                <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
+                    <!-- UPDATED TEXT -->
+                    <li><strong>Revenue:</strong> Achieved £6k above the monthly forecast.</li>
+                    <li><strong>Overheads:</strong> Currently favorable, resulting in a net £3k underspend (£1k in wages and £2k in other overheads) actively investing in the necessary infrastructure and resources for budgeted sales growth later in the year.</li>
+                    <li><strong>Net Profit:</strong> AVE Overall net profit position was positive by £8.4k, noting investment commitments for Q1.</li>
+                </ul>
+            </div>
+
+            <!-- Section 2: Business Development -->
+            <div>
+                <h3 class="text-xl font-semibold text-ave-teal mb-4">2. Business Development</h3>
+                
+                <!-- Simple table for pipeline -->
+                <div class="grid grid-cols-3 gap-4 text-center mb-4">
+                    <div class="bg-gray-50 p-3 rounded-lg">
+                        <p class="text-sm text-gray-500">Pipeline Value</p>
+                        <p class="text-2xl font-bold text-ave-dark">£14.6M</p>
+                    </div>
+                    <div class="bg-gray-50 p-3 rounded-lg">
+                        <p class="text-sm text-gray-500">Income Opportunity</p>
+                        <p class="text-2xl font-bold text-ave-dark">£733k</p>
+                    </div>
+                    <div class="bg-gray-50 p-3 rounded-lg">
+                        <p class="text-sm text-gray-500">No. of Opportunities</p>
+                        <p class="text-2xl font-bold text-ave-dark">39</p>
+                    </div>
+                </div>
+
+                <!-- UPDATED TEXT -->
+                <p class="text-gray-700 text-sm leading-relaxed mb-3">
+                    BDM Adam has now left the business, we are actively recruiting 2 new BDM roles and have 4 applicants progressing to interview.
+                </p>
+                <p class="text-gray-700 text-sm leading-relaxed mb-3">
+                    We have defined our Sales Strategy around Sectors, Businesses, Contacts and a sector / business specific approach. We refer to this as our <strong>Zebra approach</strong> and has delivered a 12-month database to target. Additionally we have built an annual calendar detailing which period we will target each sector and with which services will deliver highest conversion - ie Care & Hospitality with Disposables.
+                </p>
+
+                <h4 class="text-lg font-semibold text-ave-dark mt-4 mb-2">New Clients (October 25)</h4>
+                <ul class="list-disc list-inside text-gray-700 text-sm space-y-1 mb-3">
+                    <li><strong>Bankhouse Hotel & Spa</strong> - Foodservice</li>
+                    <li><strong>KingsCourt Hotel</strong> - Foodservice (Have also since started engaging with sister property to onboard)</li>
+                    <li><strong>Creme Care</strong> - Produce</li>
+                </ul>
+
+                <h4 class="text-lg font-semibold text-ave-dark mt-4 mb-2">Strategy & Marketing</h4>
+                <ul class="list-disc list-inside text-gray-700 text-sm space-y-2">
+                    <li>Our telemarketing Campaign follows the GTM Strategy targeting Care with our known large savings in Disposables & Consumables.</li>
+                    <li>We are also working through Networking Strategy - DI has attended 5 events in October which have generated 4 active leads in Education.</li>
+                    <li>Agreed our GTM Strategy for Nutritional Services - this is now with Marketing to build an advertising suite of services for us to sell as a stand alone service.</li>
+                    <li><strong>PR / SEO / Brand Awareness:</strong> Proposal received from Henry Pepper & ‘Make more Noise’ PR agencies - 3 more being reviewed this week with aim to start in Nov 25.</li>
+                    <li><strong>Events:</strong> AVE are exhibiting at The School & Academies Show at the NEC 19th & 20th Oct - EW, AB & DI in attendance.</li>
+                </ul>
+            </div>
+
+            <!-- Section 3: Procurement -->
+            <div>
+                <h3 class="text-xl font-semibold text-ave-teal mb-4">3. Procurement</h3>
+                <p class="text-gray-700 text-sm font-semibold">No Price Reviews in October 2025</p>
+                <h4 class="text-lg font-semibold text-ave-dark mt-4 mb-2">Projects</h4>
+                <ul class="list-disc list-inside text-gray-700 text-sm space-y-2">
+                    <!-- Text is identical to previous doc -->
+                    <li><strong>Paying the Bill:</strong> Engagement has increased to 15 suppliers. The novation document, including a guarantor draft, has been issued, and suppliers are now responding with approvals and queries. Development of an FAQ document will commence shortly.</li>
+                    <li><strong>Innovation - Brand Meetings:</strong> Brand meetings took place throughout October, with positive initial discussions around establishing direct manufacturer deals. Brands engaged include Heinz, Unilever, PepsiCo, Twinings, and Nestlé.</li>
+                    <li><strong>Innovation - Onboarding:</strong> Regency Clothing is now fully onboarded across two clients: Aspens and Miquill.</li>
+                    <li><strong>Innovation - Strategy:</strong> A Green Gourmet strategy meeting was held in October, focusing on market trends, product development, and the integration of AI within AVE to enhance future initiatives.</li>
+                    <li><strong>Sustainability:</strong> Net Zero Now carbon report has been received, with client presentations scheduled to commence in Q1.</li>
+                </ul>
+            </div>
+
+            <!-- Section 4: Operations -->
+            <div>
+                <h3 class="text-xl font-semibold text-ave-teal mb-4">4. Operations & Client Services</h3>
+                <h4 class="text-lg font-semibold text-ave-dark mt-4 mb-2">Projects</h4>
+                <ul class="list-disc list-inside text-gray-700 text-sm space-y-2">
+                    <!-- UPDATED TEXT -->
+                    <li><strong>Paying the Bill:</strong> The project is progressing as planned and the go/ no go decision will be made on the 13th November for a go live of early December. Communication(s) will be sent from AVE, to clients, updating them on the changes to Procure Wizard and Mini Markets.</li>
+                    <li><strong>CRM and Client Services ticketing system:</strong> The Halo CRM migration from Halo ITSM was successful. All new client services tickets, sales opportunities, and F&N work are now fully functional in the new system. Unfortunately, due to complications with the way that tickets were migrated, the statistics for the previous month will not be accurate, hence the lower scores in the table below.</li>
+                    <li><strong>New:</strong> We are now displaying the ticket dashboard performance on screens across the office.</li>
+                </ul>
+            </div>
+
         </div>
 
     </div>
