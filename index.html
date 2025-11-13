@@ -21,38 +21,6 @@
         .text-ave-dark { color: #374151; }
         .border-ave-teal { border-color: #009688; }
 
-        /* --- RELIABLE CSS-ONLY DONUT CHART --- */
-        .pie {
-          width: 120px;
-          height: 120px;
-          border-radius: 50%;
-          position: relative;
-          display: grid;
-          place-items: center;
-        }
-        .pie.teal-box {
-          width: 100px; /* Smaller for the teal box */
-          height: 100px;
-        }
-        /* Donut hole */
-        .pie:before {
-          content: "";
-          position: absolute;
-          border-radius: 50%;
-          width: 70%;
-          height: 70%;
-          /* This MUST match the background of the box it sits in */
-        }
-        /* Hole for chart in 'bg-gray-50' (#f9fafb) */
-        .pie.gray-box:before {
-          background: #f9fafb; 
-        }
-        /* Hole for charts in 'bg-ave-teal' (#009688) */
-        .pie.teal-box:before {
-          background: #009688;
-        }
-        /* --- END OF CHART CSS --- */
-
         /* --- PRINT STYLES --- */
         @media print {
             body {
@@ -91,8 +59,8 @@
             .bg-ave-orange {
                 background-color: #f59e0b !important;
             }
-            .pie {
-                /* Force rendering of gradient */
+            svg {
+                /* Force rendering of SVG colors */
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
@@ -100,6 +68,8 @@
             .print-page-1 {
                 /* Contains the whole dashboard */
                 break-after: page;
+                /* Small layout tweaks for print */
+                padding-bottom: 2rem;
             }
             .print-page-2 {
                 /* Contains Comm & BD text */
@@ -111,7 +81,7 @@
 </head>
 <body class="bg-gray-100 p-4 md:p-8">
 
-    <!-- NEW: Save as PDF Button -->
+    <!-- Save as PDF Button -->
     <div class="max-w-4xl mx-auto mb-4 print-hide">
         <button onclick="window.print()" class="bg-ave-teal text-white font-bold py-2 px-4 rounded-lg shadow hover:bg-opacity-90 transition-colors">
             Save as PDF
@@ -159,14 +129,19 @@
                         <p class="text-sm text-gray-700">(£35.8k Actual)</p>
                     </div>
 
-                    <!-- KPI 3: Conversion Chart (12%) -->
-                    <div class="bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center">
-                        <!-- THE FIX: #e5e7eb 12% (was 0) -->
-                        <div class="pie gray-box" style="background: conic-gradient(#f59e0b 12%, #e5e7eb 12%);">
-                            <div class="absolute text-center">
-                                <span class="text-2xl font-bold text-ave-dark">12%</span>
-                            </div>
-                        </div>
+                    <!-- KPI 3: Conversion Chart (12%) - SVG -->
+                    <div class="bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center min-h-[140px] print-h-auto">
+                        <svg class="w-24 h-24" viewBox="0 0 120 120">
+                            <!-- Background Circle -->
+                            <circle cx="60" cy="60" r="50" fill="none" stroke="#e5e7eb" stroke-width="20" />
+                            <!-- Foreground Circle (12%) -->
+                            <circle cx="60" cy="60" r="50" fill="none" stroke="#f59e0b" stroke-width="20"
+                                stroke-dasharray="314.159"
+                                stroke-dashoffset="276.46" <!-- 314.159 * (1 - 0.12) -->
+                                transform="rotate(-90 60 60)" />
+                            <!-- Text -->
+                            <text x="60" y="65" font-family="Inter, sans-serif" font-size="24" font-weight="bold" fill="#374151" text-anchor="middle">12%</text>
+                        </svg>
                         <p class="text-sm font-medium text-ave-dark mt-2">New Business Conversion</p>
                     </div>
                 </div>
@@ -212,31 +187,41 @@
                 <h3 class="text-xl font-semibold text-ave-teal mb-4">Operational & People KPIs (YTD)</h3>
 
                 <div class="grid grid-cols-3 gap-4 mb-4">
-                    <!-- KPI: Valid Ticket Compliance (56%) -->
-                    <div class="bg-ave-teal text-white rounded-lg p-4 flex flex-col items-center justify-center min-h-[160px]">
-                        <!-- THE FIX: #04A192 56% (was 0) -->
-                        <div class="pie teal-box" style="background: conic-gradient(#f59e0b 56%, #04A192 56%);">
-                            <div class="absolute text-center">
-                                <span class="text-2xl font-bold text-white">56%</span>
-                            </div>
-                        </div>
+                    <!-- KPI: Valid Ticket Compliance (56%) - SVG -->
+                    <div class="bg-ave-teal text-white rounded-lg p-4 flex flex-col items-center justify-center min-h-[140px] print-h-auto">
+                        <svg class="w-24 h-24" viewBox="0 0 120 120">
+                            <!-- Background Circle (Light Teal) -->
+                            <circle cx="60" cy="60" r="50" fill="none" stroke="#e0f2f1" stroke-opacity="0.5" stroke-width="20" />
+                            <!-- Foreground Circle (56%) -->
+                            <circle cx="60" cy="60" r="50" fill="none" stroke="#f59e0b" stroke-width="20"
+                                stroke-dasharray="314.159"
+                                stroke-dashoffset="138.23" <!-- 314.159 * (1 - 0.56) -->
+                                transform="rotate(-90 60 60)" />
+                            <!-- Text -->
+                            <text x="60" y="65" font-family="Inter, sans-serif" font-size="24" font-weight="bold" fill="#FFFFFF" text-anchor="middle">56%</text>
+                        </svg>
                         <p class="text-sm font-medium text-white mt-2 text-center">Valid Ticket Compliance</p>
                     </div>
 
                     <!-- KPI: Total Tickets (180) -->
-                    <div class="bg-ave-teal text-white rounded-lg p-4 flex flex-col items-center justify-center min-h-[160px]">
+                    <div class="bg-ave-teal text-white rounded-lg p-4 flex flex-col items-center justify-center min-h-[140px] print-h-auto">
                         <p class="text-sm opacity-90 text-center">Total Tickets</p>
                         <p class="text-5xl font-bold text-white">180</p>
                     </div>
 
-                    <!-- KPI: Bespoke Menu Compliance (93%) -->
-                    <div class="bg-ave-teal text-white rounded-lg p-4 flex flex-col items-center justify-center min-h-[160px]">
-                        <!-- THE FIX: #04A192 93% (was 0) -->
-                        <div class="pie teal-box" style="background: conic-gradient(#f59e0b 93%, #04A192 93%);">
-                            <div class="absolute text-center">
-                                <span class="text-2xl font-bold text-white">93%</span>
-                            </div>
-                        </div>
+                    <!-- KPI: Bespoke Menu Compliance (93%) - SVG -->
+                    <div class="bg-ave-teal text-white rounded-lg p-4 flex flex-col items-center justify-center min-h-[140px] print-h-auto">
+                        <svg class="w-24 h-24" viewBox="0 0 120 120">
+                            <!-- Background Circle (Light Teal) -->
+                            <circle cx="60" cy="60" r="50" fill="none" stroke="#e0f2f1" stroke-opacity="0.5" stroke-width="20" />
+                            <!-- Foreground Circle (93%) -->
+                            <circle cx="60" cy="60" r="50" fill="none" stroke="#f59e0b" stroke-width="20"
+                                stroke-dasharray="314.159"
+                                stroke-dashoffset="21.99" <!-- 314.159 * (1 - 0.93) -->
+                                transform="rotate(-90 60 60)" />
+                            <!-- Text -->
+                            <text x="60" y="65" font-family="Inter, sans-serif" font-size="24" font-weight="bold" fill="#FFFFFF" text-anchor="middle">93%</text>
+                        </svg>
                         <p class="text-sm font-medium text-white mt-2 text-center">Bespoke Menu Compliance</p>
                     </div>
                 </div>
