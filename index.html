@@ -149,6 +149,11 @@
 
             .print-page-2 {
                 break-after: page;
+                padding-top: 1.5rem; /* Add some space at the top of new page */
+            }
+            
+            .print-page-3 {
+                 padding-top: 1.5rem; /* Add some space at the top of new page */
             }
         }
         /* --- END OF PRINT STYLES --- */
@@ -287,7 +292,7 @@
 
                 <!-- People KPI - Orange Box (100%) -->
                 <div class="bg-ave-orange text-white rounded-lg p-4 text-center">
-                    <p class="text-sm opacity-90">Mandatory Training Completion (YTD)</p>
+                    <p class="text-sm opacity-90">MandATORY Training Completion (YTD)</p>
                     <p class="text-4xl font-bold text-white">100%</p>
                 </div>
             </div>
@@ -301,9 +306,29 @@
         <div class="pt-6 border-t border-gray-200 space-y-6">
             
             <!-- ============================================= -->
-            <!--         PRINT PAGE 2: COMM & PROCUREMENT      -->
+            <!--         PRINT PAGE 2: MD SUMMARY              -->
             <!-- ============================================= -->
             <div class="print-page-2">
+                <!-- NEW MD SUMMARY SECTION -->
+                <div>
+                    <h3 class="text-xl font-semibold text-ave-teal mb-4">Managing Directors Executive Summary & Strategic Context</h3>
+                    <p class="text-gray-700 text-sm leading-relaxed mb-3">
+                        We start the first financial period of the year with a clear focus on 3 key pillars of the business. <strong>People. Foundations & Growth.</strong>
+                    </p>
+                    <ul class="list-disc list-inside text-gray-700 text-sm space-y-2">
+                        <li><strong>People</strong> - We have held a strategic away day with the whole business in which we increased the teams understanding of our vision & values with avg scoring increasing substantially from a 2.7/5 to a 4.5/5. The team also delivered departmental updates and client service excellence training sessions to align everyone in each department with key projects. The away day also engaged with our L&D programme with presentations from their team to our whole business to ensure everyone has the opportunity to thrive. We are also expanding capacity within our office environment to account for the additional head count of 2 new buyers we have invested in and ensure they become part of our office and business culture with a place to call home.</li>
+                        <li><strong>Foundations</strong> - Work on our internal and client facing systems is increasing significantly with improvements to Procure Wizard as well as Halo and our ticketing and Sales platforms to streamline processes, increase efficiencies and drive data output. Significant investment into the Paying the Bill project which we expect to receive a ‘Go/NoGo’ decision from the Project Team on 19th Nov 25.</li>
+                        <li><strong>Growth</strong> - Our priority has been winning new business in month (3wins including our first hotel group) and building the Go To Market Strategy and Operational Processes for Sales, Marketing, PR & SEO and Onboarding new business. These are already being implemented within the business and recruitment underway for 2 new BDM’s with strong KPI expectations.</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- END OF PRINT PAGE 2 -->
+
+
+            <!-- ============================================= -->
+            <!--         PRINT PAGE 3: ALL OTHER DEPARTMENTS   -->
+            <!-- ============================================= -->
+            <div class="print-page-3 space-y-6">
                 <!-- Section 1: Commercial -->
                 <div>
                     <h3 class="text-xl font-semibold text-ave-teal mb-4">1. Commercial Summary</h3>
@@ -319,29 +344,8 @@
                     </ul>
                 </div>
 
-                <!-- Section 3: Procurement -->
-                <div class="mt-6">
-                    <h3 class="text-xl font-semibold text-ave-teal mb-4">3. Procurement</h3>
-                    <p class="text-gray-700 text-sm font-semibold">No Price Reviews in October 2025</p>
-                    <h4 class="text-lg font-semibold text-ave-dark mt-4 mb-2">Projects</h4>
-                    <ul class="list-disc list-inside text-gray-700 text-sm space-y-2">
-                        <li><strong>Paying the Bill:</strong> Engagement has increased to 15 suppliers. The novation document, including a guarantor draft, has been issued, and suppliers are now responding with approvals and queries. Development of an FAQ document will commence shortly.</li>
-                        <li><strong>Innovation - Brand Meetings:</strong> Brand meetings took place throughout October, with positive initial discussions around establishing direct manufacturer deals. Brands engaged include Heinz, Unilever, PepsiCo, Twinings, and Nestlé.</li>
-                        <li><strong>Innovation - Onboarding:</strong> Regency Clothing is now fully onboarded across two clients: Aspens and Miquill.</li>
-                        <li><strong>Innovation - Strategy:</strong> A Green Gourmet strategy meeting was held in October, focusing on market trends, product development, and the integration of AI within AVE to enhance future initiatives.</li>
-                        <li><strong>Sustainability:</strong> Net Zero Now carbon report has been received, with client presentations scheduled to commence in Q1.</li>
-                    </ul>
-                </div>
-            </div>
-            <!-- END OF PRINT PAGE 2 -->
-
-
-            <!-- ============================================= -->
-            <!--         PRINT PAGE 3: BD & OPS                -->
-            <!-- ============================================= -->
-            <div>
                 <!-- Section 2: Business Development -->
-                <div class="mt-6">
+                <div>
                     <h3 class="text-xl font-semibold text-ave-teal mb-4">2. Business Development</h3>
                     
                     <div class="grid grid-cols-3 gap-4 text-center mb-4">
@@ -378,13 +382,27 @@
                         <li>Our telemarketing Campaign follows the GTM Strategy targeting Care with our known large savings in Disposables & Consumables.</li>
                         <li>We are also working through Networking Strategy - DI has attended 5 events in October which have generated 4 active leads in Education.</li>
                         <li>Agreed our GTM Strategy for Nutritional Services - this is now with Marketing to build an advertising suite of services for us to sell as a stand alone service.</li>
-                        <li><strong>PR / SEO / Brand Awareness:</strong> Proposal received from Henry Pepper & ‘Make more Noise’ PR agencies - 3 more being reviewed this week with aim to start in Nov 25.</li>
+                        <li><strong>PR / SEO / Brand Awareness:</strong> Proposal received from Henry Pepper & ‘Make moreNoise’ PR agencies - 3 more being reviewed this week with aim to start in Nov 25.</li>
                         <li><strong>Events:</strong> AVE are exhibiting at The School & Academies Show at the NEC 19th & 20th Oct - EW, AB & DI in attendance.</li>
                     </ul>
                 </div>
 
+                <!-- Section 3: Procurement -->
+                <div>
+                    <h3 class="text-xl font-semibold text-ave-teal mb-4">3. Procurement</h3>
+                    <p class="text-gray-700 text-sm font-semibold">No Price Reviews in October 2025</p>
+                    <h4 class="text-lg font-semibold text-ave-dark mt-4 mb-2">Projects</h4>
+                    <ul class="list-disc list-inside text-gray-700 text-sm space-y-2">
+                        <li><strong>Paying the Bill:</strong> Engagement has increased to 15 suppliers. The novation document, including a guarantor draft, has been issued, and suppliers are now responding with approvals and queries. Development of an FAQ document will commence shortly.</li>
+                        <li><strong>Innovation - Brand Meetings:</strong> Brand meetings took place throughout October, with positive initial discussions around establishing direct manufacturer deals. Brands engaged include Heinz, Unilever, PepsiCo, Twinings, and Nestlé.</li>
+                        <li><strong>Innovation - Onboarding:</strong> Regency Clothing is now fully onboarded across two clients: Aspens and Miquill.</li>
+                        <li><strong>Innovation - Strategy:</strong> A Green Gourmet strategy meeting was held in October, focusing on market trends, product development, and the integration of AI within AVE to enhance future initiatives.</li>
+                        <li><strong>Sustainability:</strong> Net Zero Now carbon report has been received, with client presentations scheduled to commence in Q1.</li>
+                    </ul>
+                </div>
+
                 <!-- Section 4: Operations -->
-                <div class="mt-6">
+                <div>
                     <h3 class="text-xl font-semibold text-ave-teal mb-4">4. Operations & Client Services</h3>
                     <h4 class="text-lg font-semibold text-ave-dark mt-4 mb-2">Projects</h4>
                     <ul class="list-disc list-inside text-gray-700 text-sm space-y-2">
