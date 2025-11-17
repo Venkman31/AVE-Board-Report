@@ -41,6 +41,7 @@
           border-radius: 50%;
           width: 70%;
           height: 70%;
+          /* This MUST match the background of the box it sits in */
         }
         /* Hole for chart in 'bg-gray-50' (#f9fafb) */
         .pie.gray-box:before {
@@ -204,6 +205,10 @@
         <div class="print-page-1">
             <div class="pt-2">
                 <h3 class="text-xl font-semibold text-ave-teal mb-4">Managing Directors Executive Summary & Strategic Context</h3>
+                <!-- UPDATED TEXT -->
+                <p class="text-gray-700 text-sm leading-relaxed mb-3">
+                    As my third month of being part of AVE draws to a conclusion I am delighted to share this Board Report with you. It has been an amazing journey so far and I am so very excited about what lies ahead.
+                </p>
                 <p class="text-gray-700 text-sm leading-relaxed mb-3">
                     We start the first financial period of the year with a clear focus on 3 key pillars of the business. <strong>People. Foundations & Growth.</strong>
                 </p>
@@ -241,6 +246,7 @@
 
                     <!-- KPI 3: Conversion Chart (12%) -->
                     <div class="bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center commercial-donut-box">
+                        <!-- THIS IS THE CORRECTED GRADIENT SYNTAX -->
                         <div class="pie gray-box" style="background: conic-gradient(#f59e0b 12%, #e5e7eb 12%);">
                             <div class="absolute text-center">
                                 <span class="text-2xl font-bold text-ave-dark donut-chart-text">12%</span>
@@ -292,6 +298,7 @@
                 <div class="grid grid-cols-3 gap-4 mb-4">
                     <!-- KPI: Valid Ticket Compliance (56%) -->
                     <div class="bg-ave-teal text-white rounded-lg p-4 flex flex-col items-center justify-center min-h-[160px]">
+                        <!-- THIS IS THE CORRECTED GRADIENT SYNTAX -->
                         <div class="pie teal-box" style="background: conic-gradient(#f59e0b 56%, #e0f2f1 56%);">
                             <div class="absolute text-center">
                                 <span class="text-2xl font-bold text-white donut-chart-text">56%</span>
@@ -308,6 +315,7 @@
 
                     <!-- KPI: Bespoke Menu Compliance (93%) -->
                     <div class="bg-ave-teal text-white rounded-lg p-4 flex flex-col items-center justify-center min-h-[160px]">
+                        <!-- THIS IS THE CORRECTED GRADIENT SYNTAX -->
                         <div class="pie teal-box" style="background: conic-gradient(#f59e0b 93%, #e0f2f1 93%);">
                             <div class="absolute text-center">
                                 <span class="text-2xl font-bold text-white donut-chart-text">93%</span>
@@ -338,12 +346,14 @@
             <div class="print-page-3 space-y-6">
                 <!-- Section 1: Commercial -->
                 <div>
+                    <!-- RE-NUMBERED -->
                     <h3 class="text-xl font-semibold text-ave-teal mb-4">1. Commercial Summary</h3>
                     <p class="text-gray-700 text-sm leading-relaxed">
                         AVE has delivered a <strong>strong start</strong> to FY26, with overall financial performance exceeding budget NP by £8.5k in P1. Revenue £6k ahead of Budget, Net £3k overheads underspend alongside key Investments. Favourable position in both wages and other overheads, with funds being strategically directed towards future growth drivers as outlined below.
                     </p>
 
-                    <h4 class="text-lg font-semibold text-ave-dark mt-4 mb-2">Commercial Performance (vs. Forecast)</h4>
+                    <!-- RE-NUMBERED AND STYLED -->
+                    <h3 class="text-xl font-semibold text-ave-teal mt-4 mb-4">2. Commercial Performance (vs. Forecast)</h3>
                     <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
                         <li><strong>Revenue:</strong> Achieved £6k above the monthly forecast.</li>
                         <li><strong>Overheads:</strong> Currently favorable, resulting in a net £3k underspend (£1k in wages and £2k in other overheads) actively investing in the necessary infrastructure and resources for budgeted sales growth later in the year.</li>
@@ -351,28 +361,16 @@
                     </ul>
                 </div>
 
-                <!-- Section 3: Procurement -->
-                <div class="mt-6">
-                    <h3 class="text-xl font-semibold text-ave-teal mb-4">3. Procurement</h3>
-                    <p class="text-gray-700 text-sm font-semibold">No Price Reviews in October 2025</p>
-                    <h4 class="text-lg font-semibold text-ave-dark mt-4 mb-2">Projects</h4>
-                    <ul class="list-disc list-inside text-gray-700 text-sm space-y-2">
-                        <li><strong>Paying the Bill:</strong> Engagement has increased to 15 suppliers. The novation document, including a guarantor draft, has been issued, and suppliers are now responding with approvals and queries. Development of an FAQ document will commence shortly.</li>
-                        <li><strong>Innovation - Brand Meetings:</strong> Brand meetings took place throughout October, with positive initial discussions around establishing direct manufacturer deals. Brands engaged include Heinz, Unilever, PepsiCo, Twinings, and Nestlé.</li>
-                        <li><strong>Innovation - Onboarding:</strong> Regency Clothing is now fully onboarded across two clients: Aspens and Miquill.</li>
-                        <li><strong>Innovation - Strategy:</strong> A Green Gourmet strategy meeting was held in October, focusing on market trends, product development, and the integration of AI within AVE to enhance future initiatives.</li>
-                        <li><strong>Sustainability:</strong> Net Zero Now carbon report has been received, with client presentations scheduled to commence in Q1.</li>
-                    </ul>
-                </div>
-
                 <!-- Section 2: Business Development -->
                 <div class="mt-6">
-                    <h3 class="text-xl font-semibold text-ave-teal mb-4">2. Business Development</h3>
+                    <!-- RE-NUMBERED -->
+                    <h3 class="text-xl font-semibold text-ave-teal mb-4">3. Business Development</h3>
                     
                     <div class="grid grid-cols-3 gap-4 text-center mb-4">
                         <div class="bg-gray-50 p-3 rounded-lg">
                             <p class="text-sm text-gray-500">Pipeline Value</p>
-                            <p class="text-2xl font-bold text-ave-dark">£14.6M</p>
+                            <!-- UPDATED VALUE -->
+                            <p class="text-2xl font-bold text-ave-dark">£14.6m</p> 
                         </div>
                         <div class="bg-gray-50 p-3 rounded-lg">
                             <p class="text-sm text-gray-500">Income Opportunity</p>
@@ -404,13 +402,30 @@
                         <li>We are also working through Networking Strategy - DI has attended 5 events in October which have generated 4 active leads in Education.</li>
                         <li>Agreed our GTM Strategy for Nutritional Services - this is now with Marketing to build an advertising suite of services for us to sell as a stand alone service.</li>
                         <li><strong>PR / SEO / Brand Awareness:</strong> Proposal received from Henry Pepper & ‘Make moreNoise’ PR agencies - 3 more being reviewed this week with aim to start in Nov 25.</li>
-                        <li><strong>Events:</strong> AVE are exhibiting at The School & Academies Show at the NEC 19th & 20th Oct - EW, AB & DI in attendance.</li>
+                        <!-- UPDATED DATE -->
+                        <li><strong>Events:</strong> AVE are exhibiting at The School & Academies Show at the NEC 19th & 20th November - EW, AB & DI in attendance.</li>
+                    </ul>
+                </div>
+
+                <!-- Section 3: Procurement -->
+                <div class="mt-6">
+                    <!-- RE-NUMBERED -->
+                    <h3 class="text-xl font-semibold text-ave-teal mb-4">4. Procurement</h3>
+                    <p class="text-gray-700 text-sm font-semibold">No Price Reviews in October 2025</p>
+                    <h4 class="text-lg font-semibold text-ave-dark mt-4 mb-2">Projects</h4>
+                    <ul class="list-disc list-inside text-gray-700 text-sm space-y-2">
+                        <li><strong>Paying the Bill:</strong> Engagement has increased to 15 suppliers. The novation document, including a guarantor draft, has been issued, and suppliers are now responding with approvals and queries. Development of an FAQ document will commence shortly.</li>
+                        <li><strong>Innovation - Brand Meetings:</strong> Brand meetings took place throughout October, with positive initial discussions around establishing direct manufacturer deals. Brands engaged include Heinz, Unilever, PepsiCo, Twinings, and Nestlé.</li>
+                        <li><strong>Innovation - Onboarding:</strong> Regency Clothing is now fully onboarded across two clients: Aspens and Miquill.</li>
+                        <li><strong>Innovation - Strategy:</strong> A Green Gourmet strategy meeting was held in October, focusing on market trends, product development, and the integration of AI within AVE to enhance future initiatives.</li>
+                        <li><strong>Sustainability:</strong> Net Zero Now carbon report has been received, with client presentations scheduled to commence in Q1.</li>
                     </ul>
                 </div>
 
                 <!-- Section 4: Operations -->
                 <div class="mt-6">
-                    <h3 class="text-xl font-semibold text-ave-teal mb-4">4. Operations & Client Services</h3>
+                    <!-- RE-NUMBERED -->
+                    <h3 class="text-xl font-semibold text-ave-teal mb-4">5. Operations & Client Services</h3>
                     <h4 class="text-lg font-semibold text-ave-dark mt-4 mb-2">Projects</h4>
                     <ul class="list-disc list-inside text-gray-700 text-sm space-y-2">
                         <li><strong>Paying the Bill:</strong> The project is progressing as planned and the go/ no go decision will be made on the 13th November for a go live of early December. Communication(s) will be sent from AVE, to clients, updating them on the changes to Procure Wizard and Mini Markets.</li>
@@ -418,6 +433,23 @@
                         <li><strong>New:</strong> We are now displaying the ticket dashboard performance on screens across the office.</li>
                     </ul>
                 </div>
+
+                <!-- Section 5: Upcoming Plans -->
+                <div class="mt-6">
+                    <!-- RE-NUMBERED -->
+                    <h3 class="text-xl font-semibold text-ave-teal mb-4">6. Upcoming Plans & Actions</h3>
+                    <ul class="list-disc list-inside text-gray-700 text-sm space-y-2">
+                        <li><strong>Business Actions Plan</strong> - Link to key priority tracker with core business impact projects be department being reviewed with the SLT on a weekly basis - work in progress **********</li>
+                        <li><strong>Event Calendar:</strong> 19th & 20th November 2025 - We will be exhibiting at the School & Academies SHow this week with Darren, Ed, Danielle & Abi in attendance across the 2 days.</li>
+                        <li><strong>OTHER EVENTS</strong></li>
+                        <li><strong>Marketing</strong> - Our Marketing activity continues to work at pace in collaboration with Andrea and her team. This includes a change of management of our website, taking control of hosting and content creation & production. This will be a significant step forward and support our PR & Lead Generation ambitions.</li>
+                        <li><strong>Recruitment</strong> - We are currently recruiting for both BDM and Client Services Manager positions. Before we have even gone to market with these roles, I have generated 5 applicants from my network who are qualified and experienced within these roles including the BDM role where we have been recommended a candidate by one of the UK’s leading Sales Coaches and has recently finished the UK’s first Sales Degree. This highlights both the value of our growing network, our influence within the industry and also our openness to think outside of the box and consider a range of solutions and options to progress,</li>
+                        <li><strong>Commercial Calculator</strong> - Being built to give guidance on new business fee models and also consider new opportunities and potential return on investment.</li>
+                        <li><strong>Appraisal Tool</strong> - We are working in conjunction with L&D team to build a new appraisal tool to support our people's development and aim to have this implemented before the year end.</li>
+                        <li><strong>PowerBi</strong> - We are currently engaging in investing into Power Bi to drive clear and accurate data reporting within the business to allow us to see real time data and the opportunity to make more effective business decisions.</li>
+                    </ul>
+                </div>
+
             </div>
             <!-- END OF PRINT PAGE 3 -->
 
