@@ -117,6 +117,10 @@
             /* Squeeze Commercial KPI boxes */
             .print-page-2 .commercial-kpi-box {
                 padding: 0.5rem; /* reduce padding */
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
             }
             .print-page-2 .commercial-kpi-box .text-3xl {
                 font-size: 1.5rem; /* 24px */
@@ -205,7 +209,7 @@
         <div class="print-page-1">
             <div class="pt-2">
                 <h3 class="text-xl font-semibold text-ave-teal mb-4">Managing Directors Executive Summary & Strategic Context</h3>
-                <!-- UPDATED TEXT -->
+                <!-- Text updated from final document -->
                 <p class="text-gray-700 text-sm leading-relaxed mb-3">
                     As my third month of being part of AVE draws to a conclusion I am delighted to share this Board Report with you. It has been an amazing journey so far and I am so very excited about what lies ahead.
                 </p>
@@ -214,7 +218,7 @@
                 </p>
                 <ul class="list-disc list-inside text-gray-700 text-sm space-y-2">
                     <li><strong>People</strong> - We have held a strategic away day with the whole business in which we increased the teams understanding of our vision & values with avg scoring increasing substantially from a 2.7/5 to a 4.5/5. The team also delivered departmental updates and client service excellence training sessions to align everyone in each department with key projects. The away day also engaged with our L&D programme with presentations from their team to our whole business to ensure everyone has the opportunity to thrive. We are also expanding capacity within our office environment to account for the additional head count of 2 new buyers we have invested in and ensure they become part of our office and business culture with a place to call home.</li>
-                    <li><strong>Foundations</strong> - Work on our internal and client facing systems is increasing significantly with improvements to Procure Wizard as well as Halo and our ticketing and Sales platforms to streamline processes, increase efficiencies and drive data output. Significant investment into the Paying the Bill project which we expect to receive a ‘Go/NoGo’ decision from the Project Team on 19th Nov 25.</li>
+                    <li><strong>Foundations</strong> - Work on our internal and client facing systems is increasing significantly with improvements to Procure Wizard and Halo and our ticketing and Sales platforms to streamline processes, increase efficiencies and drive data output. Significant investment into the Paying the Bill project which we expect to receive a ‘Go/NoGo’ decision from the Project Team on 19th Nov 25.</li>
                     <li><strong>Growth</strong> - Our priority has been winning new business in month (3wins including our first hotel group) and building the Go To Market Strategy and Operational Processes for Sales, Marketing, PR & SEO and Onboarding new business. These are already being implemented within the business and recruitment underway for 2 new BDM’s with strong KPI expectations.</li>
                 </ul>
             </div>
@@ -232,13 +236,15 @@
                 <h3 class="text-xl font-semibold text-ave-teal mb-4">Commercial KPIs (YTD)</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     
-                    <div class="bg-gray-50 rounded-lg p-4 text-center commercial-kpi-box">
+                    <!-- CENTERING FIX APPLIED -->
+                    <div class="bg-gray-50 rounded-lg p-4 text-center flex flex-col items-center justify-center commercial-kpi-box">
                         <p class="text-sm text-gray-500">Revenue vs Budget</p>
                         <p class="text-3xl font-bold text-ave-orange">+£5k</p>
                         <p class="text-sm text-gray-700">(£199k Actual)</p>
                     </div>
 
-                    <div class="bg-gray-50 rounded-lg p-4 text-center commercial-kpi-box">
+                    <!-- CENTERING FIX APPLIED -->
+                    <div class="bg-gray-50 rounded-lg p-4 text-center flex flex-col items-center justify-center commercial-kpi-box">
                         <p class="text-sm text-gray-500">PBIT vs Budget</p>
                         <p class="text-3xl font-bold text-ave-orange">+£8.4k</p>
                         <p class="text-sm text-gray-700">(£35.8k Actual)</p>
@@ -346,13 +352,14 @@
             <div class="print-page-3 space-y-6">
                 <!-- Section 1: Commercial -->
                 <div>
-                    <!-- RE-NUMBERED -->
                     <h3 class="text-xl font-semibold text-ave-teal mb-4">1. Commercial Summary</h3>
                     <p class="text-gray-700 text-sm leading-relaxed">
                         AVE has delivered a <strong>strong start</strong> to FY26, with overall financial performance exceeding budget NP by £8.5k in P1. Revenue £6k ahead of Budget, Net £3k overheads underspend alongside key Investments. Favourable position in both wages and other overheads, with funds being strategically directed towards future growth drivers as outlined below.
                     </p>
+                </div>
 
-                    <!-- RE-NUMBERED AND STYLED -->
+                <!-- Section 2: Commercial Performance -->
+                <div class="mt-6">
                     <h3 class="text-xl font-semibold text-ave-teal mt-4 mb-4">2. Commercial Performance (vs. Forecast)</h3>
                     <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
                         <li><strong>Revenue:</strong> Achieved £6k above the monthly forecast.</li>
@@ -361,15 +368,13 @@
                     </ul>
                 </div>
 
-                <!-- Section 2: Business Development -->
+                <!-- Section 3: Business Development -->
                 <div class="mt-6">
-                    <!-- RE-NUMBERED -->
                     <h3 class="text-xl font-semibold text-ave-teal mb-4">3. Business Development</h3>
                     
                     <div class="grid grid-cols-3 gap-4 text-center mb-4">
                         <div class="bg-gray-50 p-3 rounded-lg">
                             <p class="text-sm text-gray-500">Pipeline Value</p>
-                            <!-- UPDATED VALUE -->
                             <p class="text-2xl font-bold text-ave-dark">£14.6m</p> 
                         </div>
                         <div class="bg-gray-50 p-3 rounded-lg">
@@ -382,8 +387,9 @@
                         </div>
                     </div>
 
+                    <!-- UPDATED TEXT -->
                     <p class="text-gray-700 text-sm leading-relaxed mb-3">
-                        BDM Adam has now left the business, we are actively recruiting 2 new BDM roles and have 4 applicants progressing to interview.
+                        BDM Adam has now left the business. We are actively recruiting 2 new BDM roles and have 4 applicants progressing to interview.
                     </p>
                     <p class="text-gray-700 text-sm leading-relaxed mb-3">
                         We have defined our Sales Strategy around Sectors, Businesses, Contacts and a sector / business specific approach. We refer to this as our <strong>Zebra approach</strong> and has delivered a 12-month database to target. Additionally we have built an annual calendar detailing which period we will target each sector and with which services will deliver highest conversion - ie Care & Hospitality with Disposables.
@@ -401,15 +407,14 @@
                         <li>Our telemarketing Campaign follows the GTM Strategy targeting Care with our known large savings in Disposables & Consumables.</li>
                         <li>We are also working through Networking Strategy - DI has attended 5 events in October which have generated 4 active leads in Education.</li>
                         <li>Agreed our GTM Strategy for Nutritional Services - this is now with Marketing to build an advertising suite of services for us to sell as a stand alone service.</li>
-                        <li><strong>PR / SEO / Brand Awareness:</strong> Proposal received from Henry Pepper & ‘Make moreNoise’ PR agencies - 3 more being reviewed this week with aim to start in Nov 25.</li>
-                        <!-- UPDATED DATE -->
+                        <!-- UPDATED TEXT -->
+                        <li><strong>PR / SEO / Brand Awareness:</strong> Proposal received from Henry Pepper & ‘Make more Noise’ PR agencies - 3 more being reviewed this week with aim to start on Nov 25.</li>
                         <li><strong>Events:</strong> AVE are exhibiting at The School & Academies Show at the NEC 19th & 20th November - EW, AB & DI in attendance.</li>
                     </ul>
                 </div>
 
-                <!-- Section 3: Procurement -->
+                <!-- Section 4: Procurement -->
                 <div class="mt-6">
-                    <!-- RE-NUMBERED -->
                     <h3 class="text-xl font-semibold text-ave-teal mb-4">4. Procurement</h3>
                     <p class="text-gray-700 text-sm font-semibold">No Price Reviews in October 2025</p>
                     <h4 class="text-lg font-semibold text-ave-dark mt-4 mb-2">Projects</h4>
@@ -422,9 +427,8 @@
                     </ul>
                 </div>
 
-                <!-- Section 4: Operations -->
+                <!-- Section 5: Operations -->
                 <div class="mt-6">
-                    <!-- RE-NUMBERED -->
                     <h3 class="text-xl font-semibold text-ave-teal mb-4">5. Operations & Client Services</h3>
                     <h4 class="text-lg font-semibold text-ave-dark mt-4 mb-2">Projects</h4>
                     <ul class="list-disc list-inside text-gray-700 text-sm space-y-2">
@@ -434,19 +438,21 @@
                     </ul>
                 </div>
 
-                <!-- Section 5: Upcoming Plans -->
+                <!-- Section 6: Upcoming Plans -->
                 <div class="mt-6">
-                    <!-- RE-NUMBERED -->
                     <h3 class="text-xl font-semibold text-ave-teal mb-4">6. Upcoming Plans & Actions</h3>
                     <ul class="list-disc list-inside text-gray-700 text-sm space-y-2">
                         <li><strong>Business Actions Plan</strong> - Link to key priority tracker with core business impact projects be department being reviewed with the SLT on a weekly basis - work in progress **********</li>
                         <li><strong>Event Calendar:</strong> 19th & 20th November 2025 - We will be exhibiting at the School & Academies SHow this week with Darren, Ed, Danielle & Abi in attendance across the 2 days.</li>
                         <li><strong>OTHER EVENTS</strong></li>
                         <li><strong>Marketing</strong> - Our Marketing activity continues to work at pace in collaboration with Andrea and her team. This includes a change of management of our website, taking control of hosting and content creation & production. This will be a significant step forward and support our PR & Lead Generation ambitions.</li>
-                        <li><strong>Recruitment</strong> - We are currently recruiting for both BDM and Client Services Manager positions. Before we have even gone to market with these roles, I have generated 5 applicants from my network who are qualified and experienced within these roles including the BDM role where we have been recommended a candidate by one of the UK’s leading Sales Coaches and has recently finished the UK’s first Sales Degree. This highlights both the value of our growing network, our influence within the industry and also our openness to think outside of the box and consider a range of solutions and options to progress,</li>
+                        <!-- UPDATED TEXT -->
+                        <li><strong>Recruitment</strong> - We are currently recruiting for both BDM and Client Services Manager positions. Before we have even gone to market with these roles, I have generated 5 applicants from my network who are qualified and experienced within these roles including the BDM role where we have been recommended a candidate by one of the UK’s leading Sales Coaches and has recently completed the UK’s first Sales Degree. This highlights both the value of our growing network, our influence within the industry and also our openness to think outside of the box and consider a range of solutions and options to progress,</li>
                         <li><strong>Commercial Calculator</strong> - Being built to give guidance on new business fee models and also consider new opportunities and potential return on investment.</li>
-                        <li><strong>Appraisal Tool</strong> - We are working in conjunction with L&D team to build a new appraisal tool to support our people's development and aim to have this implemented before the year end.</li>
-                        <li><strong>PowerBi</strong> - We are currently engaging in investing into Power Bi to drive clear and accurate data reporting within the business to allow us to see real time data and the opportunity to make more effective business decisions.</li>
+                        <!-- UPDATED TEXT -->
+                        <li><strong>Appraisal Tool</strong> - We are working along with the L & D team to build a new appraisal tool to support our people's development and aim to have this implemented before the year end.</li>
+                        <!-- UPDATED TEXT -->
+                        <li><strong>PowerBi</strong> - We are currently engaging in investing into Power Bi to drive clear and accurate data reporting within the business to enable us to see real time data and the opportunity to make more effective business decisions.</li>
                     </ul>
                 </div>
 
